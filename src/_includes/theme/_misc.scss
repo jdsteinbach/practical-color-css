@@ -1,0 +1,21 @@
+.slide-background-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[style*="anchor-name"] {
+  position: relative;
+}
+
+[style*="position-anchor"] {
+  position: absolute;
+  margin: 0;
+}
+
+.overlay {
+  padding: 1em;
+  background: rgba($mainColor, .85);
+  color: #fff;
+  font-weight: 500;
+}

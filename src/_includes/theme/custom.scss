@@ -1,0 +1,264 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+
+$backgroundColor: #17C37B;
+
+$mainColor: #112378;
+$headingColor: $mainColor;
+
+$preColor: #FFD007;
+
+$mainFontSize: 40px;
+$mainFont: 'canada-type-gibson', Helvetica, sans-serif;
+$headingFont: 'mono45-headline', Helvetica, sans-serif;
+$headingFontWeight: 700;
+$heading1Size: 3.6em;
+$heading2Size: 2.4em;
+$heading3Size: 2em;
+$heading4Size: 1.6em;
+
+$linkColor: #112378;
+$linkColorHover: #0033FF;
+$linkColorDark: color.scale($linkColor, $lightness: -15%);
+
+$selectionBackgroundColor: color.adjust($linkColor, $lightness: 25%);
+
+$codeFont: 'ibm-plex-mono', Operator Mono, monospace;
+
+@use "template/settings" with (
+  $background-color: $backgroundColor,
+	$background: $backgroundColor,
+
+	$main-font: $mainFont,
+	$main-font-size: $mainFontSize,
+  $main-color: $mainColor,
+
+  $heading-color: $headingColor,
+	$heading-font: $headingFont,
+	$heading-font-weight: $headingFontWeight,
+  $heading1-size: $heading1Size,
+  $heading2-size: $heading2Size,
+  $heading3-size: $heading3Size,
+  $heading4-size: $heading4Size,
+
+  $link-color: $linkColor,
+  $link-color-hover: $linkColorHover,
+  $link-color-dark: $linkColorDark,
+
+  $selection-background-color: $selectionBackgroundColor,
+
+  $code-font: $codeFont,
+);
+
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "template/mixins";
+// ---------------------------------------------
+
+
+// Solarized colors
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+
+body {
+  font-feature-settings: "liga";
+}
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #222;
+	}
+}
+
+.reveal {
+  section {
+    h2, h3, h4, h5, h6 {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 60rem;
+      font-weight: 800;
+      text-wrap: balance;
+
+      + p,
+      + ul {
+        margin-top: 1em;
+      }
+    }
+
+    h2, h4, h6 {
+      font-family: $codeFont;
+      text-transform: none;
+    }
+
+    h2 + h3 {
+      font-family: $mainFont;
+      text-transform: none;
+      font-weight: 400;
+    }
+
+    h3:first-child:last-child {
+      font-size: $heading2Size;
+    }
+
+    h2 .h1 {
+      margin-bottom: .125em;
+      padding-bottom: .125em;
+      display: block;
+      font-family: $headingFont;
+      font-size: 1.6em;
+      border-bottom: .15em solid currentColor;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      em {
+        font-style: italic;
+        border-bottom: .125em solid currentColor;
+      }
+
+      a em {
+        border-bottom: none;
+      }
+    }
+
+    a {
+      &,
+      &:hover,
+      &:active {
+        text-decoration: underline !important;
+      }
+    }
+
+    code {
+      font-size: 0.9em;
+    }
+
+    pre {
+      display: inline-block;
+      width: auto;
+      padding: 1ch;
+      border-radius: .25ch;
+      box-sizing: border-box;
+      background-color: $mainColor;
+      color: $preColor;
+
+      code {
+        max-height: 100%;
+        box-sizing: border-box;
+        font-size:  math.div($mainFontSize, 1.2);
+        line-height: 1.2;
+        overflow-x: scroll;
+        overflow-y: visible;
+      }
+
+      mark {
+        padding: 0 .25em;
+        font-weight: 800;
+        color: #fff;
+        background-color: rgba(#000, .2);
+      }
+    }
+
+    .small-code + pre code {
+      font-size: math.div($mainFontSize, 1.75);
+    }
+
+    .small-code + pre code,
+    pre:first-child:only-of-type {
+      padding: 0;
+      border-radius: 0;
+      box-shadow: 0 0 0 50vmax $mainColor;
+    }
+
+    ul,
+    ol {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 45rem;
+    }
+
+    p {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 45rem;
+
+      &:first-child:last-child {
+        font-size: $heading3Size;
+      }
+    }
+
+    blockquote {
+      padding: $heading3Size;
+      background-color: $preColor;
+      box-shadow: none;
+    }
+
+    i, em {
+      font-style: italic;
+    }
+
+    b, strong {
+      font-weight: 600;
+    }
+
+    .sr-only {
+      position: absolute;
+			height: 1px;
+			width: 1px;
+			overflow: hidden;
+			clip: rect( 1px, 1px, 1px, 1px );
+    }
+
+    .link {
+      margin-left: 0.25em;
+      padding: 0.125em;
+      display: inline-flex;
+      align-items: center;
+      border-radius: .125em;
+      background-color: rgba(var(--r-background-color), .25);
+
+      &:hover,
+      &:active {
+        background-color: rgba($linkColorHover, .15);
+      }
+    }
+
+    .link__icon {
+      width: 0.8em;
+      height: 0.8em;
+    }
+  }
+
+  @import "logo";
+  @import "code";
+  @import "colophon";
+  @import "credit";
+  @import "misc";
+  @import "demo-box";
+  @import "noper";
+}
+
+
+// Theme template ------------------------------
+@import "template/theme";
+// ---------------------------------------------

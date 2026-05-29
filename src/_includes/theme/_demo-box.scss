@@ -1,0 +1,46 @@
+.demo-box {
+  border: 2px solid $mainColor;
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 40rem;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+
+  .button {
+    flex-grow: 1;
+    display: block;
+    background: red;
+    color: #fff;
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+    font-size: 2rem;
+    appearance: none;
+  }
+}
+
+.demo-box__filter-brightness {
+  .button.hovered {
+    filter: brightness(.7);
+  }
+}
+
+.demo-box__blend-mode {
+  .button.hovered {
+    mix-blend-mode: luminosity;
+  }
+}
+
+.demo-box__rgb-variable {
+  --red: 255, 0, 0;
+
+  .button {
+    background: rgb(var(--red));
+  }
+
+  .button.hovered {
+    background: rgba(var(--red), 0.8);
+  }
+}

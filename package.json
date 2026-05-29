@@ -1,0 +1,50 @@
+{
+  "name": "practical-color-css",
+  "version": "1.0.1",
+  "description": "Practical Color CSS: CascadiaJS 2026 Slides",
+  "main": ".eleventy.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdsteinbach/practical-color-css"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "DEBUG=Eleventy* eleventy --serve",
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "screenshot": "npx playwright screenshot --device=\"Desktop Chrome\"  --viewport-size=\"1440,900\"",
+    "shot": "node scripts/screenshot.mjs"
+  },
+  "keywords": [
+    "eleventy",
+    "11ty",
+    "reveal",
+    "slides",
+    "reveal.js",
+    "responsive",
+    "components",
+    "CSS",
+    "JS"
+  ],
+  "author": "James Steinbach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdsteinbach/practical-color-css/issues"
+  },
+  "homepage": "https://github.com/jdsteinbach/practical-color-css#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "autoprefixer": "^10.5.0",
+    "cssnano": "^8.0.1",
+    "markdown-it": "^14.1.1",
+    "markdown-it-highlightjs": "^4.3.0",
+    "node-html-parser": "^7.1.0",
+    "playwright": "^1.59.1",
+    "postcss": "^8.5.14",
+    "sass": "^1.99.0"
+  },
+  "dependencies": {
+    "reveal.js": "^6.0.1"
+  }
+}

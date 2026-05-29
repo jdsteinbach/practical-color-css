@@ -1,0 +1,119 @@
+@use "sass:list";
+
+$selector-groups: (
+  (
+    comment,
+    prolog,
+    doctype,
+    cdata,
+  ),
+  (
+    punctuation,
+  ),
+  (
+    property,
+    tag,
+    constant,
+    symbol,
+    deleted,
+  ),
+  (
+    number,
+  ),
+  (
+    boolean
+  ),
+  (
+    selector,
+    attr-name,
+    string,
+    char,
+    builtin,
+    inserted,
+  ),
+  (
+    operator,
+    entity,
+    url,
+    variable,
+  ),
+  (
+    atrule,
+    attr-value,
+    function,
+    class-name,
+  ),
+  (
+    keyword,
+  ),
+  (
+    regex,
+    important
+  )
+);
+
+$selector-colors: (
+  rgba($backgroundColor, .6),
+  rgba(#fff, .6),
+  rgba(#fff, .8),
+  rgba($preColor, .8),
+  #fff,
+  $preColor,
+  rgba(#fff, .6),
+  $backgroundColor,
+  rgba(#fff, .8),
+  rgba($backgroundColor, .8),
+);
+
+@each $category-values in $selector-groups {
+  $nth: list.index($selector-groups, $category-values);
+  $names: ();
+  @each $selector in $category-values {
+    $names: list.append($names, ".token.#{$selector}", comma);
+  }
+
+  #{$names} {
+    color: list.nth($selector-colors, $nth);
+  }
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.comment,
+.token.italic {
+  font-style: italic;
+}
+
+.break-down {
+  font-weight: normal;
+  color: rgba($preColor, .6);
+
+  &.current-fragment {
+    font-weight: bold;
+    color: #fff;
+  }
+}
+
+.break-down__anchor {
+  position: relative;
+  anchor-name: --break-down-anchor;
+}
+
+.break-down__description {
+  position: absolute;
+  position-anchor: --break-down-anchor;
+  top: anchor(--break-down-anchor bottom);
+  left: anchor(--break-down-anchor left);
+  right: anchor(--break-down-anchor right);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@for $i from 1 through 5 {
+  .break-down__anchor:has(.current-fragment[data-break-down="#{$i}"]) ~ div .break-down__description:nth-child(#{$i}) {
+    opacity: 1;
+  }
+}
