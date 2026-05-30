@@ -9,7 +9,7 @@ $headingColor: $mainColor;
 
 $preColor: #FFD007;
 
-$mainFontSize: 40px;
+$mainFontSize: 50px;
 $mainFont: 'canada-type-gibson', Helvetica, sans-serif;
 $headingFont: 'mono45-headline', Helvetica, sans-serif;
 $headingFontWeight: 700;
@@ -50,13 +50,6 @@ $codeFont: 'ibm-plex-mono', Operator Mono, monospace;
 
   $code-font: $codeFont,
 );
-
-/**
- * Black theme for reveal.js. This is the opposite of the 'white' theme.
- *
- * By Hakim El Hattab, http://hakim.se
- */
-
 
 // Default mixins and settings -----------------
 @import "template/mixins";
@@ -111,6 +104,7 @@ section.has-light-background {
       text-transform: none;
     }
 
+    h1 + h3,
     h2 + h3 {
       font-family: $mainFont;
       text-transform: none;
@@ -145,7 +139,7 @@ section.has-light-background {
       &,
       &:hover,
       &:active {
-        text-decoration: underline !important;
+        text-decoration: underline;
       }
     }
 
@@ -194,17 +188,21 @@ section.has-light-background {
     ol {
       margin-right: auto;
       margin-left: auto;
-      max-width: 45rem;
+      max-width: 22em;
     }
 
     p {
       margin-right: auto;
       margin-left: auto;
-      max-width: 45rem;
+      max-width: 22em;
 
       &:first-child:last-child {
         font-size: $heading3Size;
       }
+    }
+
+    .p--large {
+      font-size: $heading4Size;
     }
 
     blockquote {

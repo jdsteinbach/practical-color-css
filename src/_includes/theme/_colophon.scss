@@ -30,6 +30,6 @@
   opacity: .75;
   font-family: $codeFont;
   font-style: italic;
-  font-size: math.div(1em, 1.5);
+  font-size: calc(8vh / 1.618);
   background-color: var(--r-background);
 }

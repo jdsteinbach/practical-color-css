@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .slide-background-content {
   display: flex;
   align-items: center;
@@ -14,8 +16,19 @@
 }
 
 .overlay {
+  display: inline-block;
   padding: 1em;
   background: rgba($mainColor, .85);
   color: #fff;
   font-weight: 500;
+
+  a {
+    color: #fff;
+    font-size: $heading3Size;
+    font-weight: bold;
+
+    &:hover {
+      color: color.mix($linkColorHover, #fff);
+    }
+  }
 }
