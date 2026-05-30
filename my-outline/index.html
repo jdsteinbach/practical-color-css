@@ -1,0 +1,65 @@
+<h1>Practical Refactors with Modern CSS Colors — Detailed Outline</h1>
+<h2>Statement of Pain</h2>
+<ul>
+<li>start with all colors in CSS <code>var()</code>s (hex codes in each one), nice simple Figma token export!</li>
+<li>now… all those colors redefined in <code>prefers-color-scheme(dark)</code></li>
+<li>now user pref?! I guess <code>body</code> gets classes, <code>.theme-dark</code>, <code>.theme-light</code> or <code>data-theme=&quot;&quot;</code> attr?</li>
+<li>CSS is cool about adding selectors with commas: <code>a {}</code> can help linkish-buttons: <code>a, button.link {}</code> but… you can’t chain a media query with a markup selector…
+<ul>
+<li><code>@media (prefers-color-scheme: dark) { /* dark theme vars */ }</code></li>
+<li><code>body[data-theme=&quot;dark&quot;] { /* dark theme vars */ }</code></li>
+</ul>
+</li>
+<li>but then light pref should override dark MQ…
+<ul>
+<li><code>:root { /* light theme vars */ }</code></li>
+<li><code>@media (prefers-color-scheme: dark) { :root { /* dark theme vars */ } }</code></li>
+<li><code>@media (prefers-color-scheme: dark) { body[data-theme=&quot;light&quot;] { /* light theme vars */ } }</code></li>
+<li><code>body[data-theme=&quot;dark&quot;] { /* dark theme vars */ }</code></li>
+</ul>
+</li>
+</ul>
+<h2>Solutions</h2>
+<h3>Cleaner Dark Mode</h3>
+<ul>
+<li><code>light-dark()</code></li>
+<li><code>color-scheme</code></li>
+</ul>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--bg</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#fff<span class="token punctuation">,</span> #000<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--fg</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#000<span class="token punctuation">,</span> #fff<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">body[data-theme="light"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">body[data-theme="dark"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3>Relative Colors</h3>
+<ul>
+<li><code>mix-blend-mode</code></li>
+<li><code>rgb()</code> with implied-alpha: <code>/</code> (btw, no <code>,</code> needed)
+<ul>
+<li>only works if <code>var()</code> returns <code>r, g, b</code> channels</li>
+<li>also works with <code>hsl()</code>, etc - just <code>/</code></li>
+</ul>
+</li>
+<li><code>rgb()</code> with <code>from()</code>
+<ul>
+<li><code>rgb(from var(--page-bg) r g b / 0.7)</code></li>
+</ul>
+</li>
+<li><code>hsl()</code> with <code>from()</code>
+<ul>
+<li><code>hsl(from var(--page-bg) h s 65%)</code></li>
+</ul>
+</li>
+</ul>
+<h3>Auto-Contrast</h3>
+<ul>
+<li><code>contrast-color()</code></li>
+<li>tinted contrast color</li>
+</ul>
+<h2>Conclusion</h2>

@@ -1,0 +1,659 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Practical Refactors with Modern CSS Colors</title>
+  <meta name="description" content="Simplifying color tokens, dark mode, and theming using modern CSS">
+
+  <link rel="stylesheet" href="reveal/reset.css">
+  <link rel="stylesheet" href="reveal/reveal.css">
+  <link rel="stylesheet" href="css/theme/custom.css">
+
+  <link rel="stylesheet" href="https://use.typekit.net/pzu4dhu.css">
+</head>
+
+<body class="">
+  <div class="reveal">
+    <div class="slides">
+      
+      <section>
+  <h1>Practical Refactors with Modern CSS Colors</h1>
+
+</section>
+
+      
+      <section>
+  <h2>Theming</h2>
+
+</section>
+
+      
+      <section>
+  <h3>Wait…<br>don’t we already have theming?</h3>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--surface-primary</span><span class="token punctuation">:</span> #eee<span class="token punctuation">;</span>
+  <span class="token property">--surface-secondary</span><span class="token punctuation">:</span> #ccc<span class="token punctuation">;</span>
+  <span class="token property">--text-primary</span><span class="token punctuation">:</span> #111<span class="token punctuation">;</span>
+  <span class="token property">--text-secondary</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span>
+  <span class="token comment">/* expand to >1K LOC… */</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
+  <span class="token comment">/* vars: light values (>1K LOC) */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">:root</span> <span class="token punctuation">{</span>
+    <span class="token property">--surface-primary</span><span class="token punctuation">:</span> #111<span class="token punctuation">;</span>
+    <span class="token property">--surface-secondary</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span>
+    <span class="token property">--text-primary</span><span class="token punctuation">:</span> #eee<span class="token punctuation">;</span>
+    <span class="token property">--text-secondary</span><span class="token punctuation">:</span> #ccc<span class="token punctuation">;</span>
+    <span class="token comment">/* expand to >1K LOC… */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
+  <span class="token comment">/* vars: light values (>1K LOC) */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">:root</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* vars: dark values (>1K LOC) */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">[data-theme="dark"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">;</span> <span class="token comment">/* lock UA styles to dark */</span>
+  <span class="token comment">/* vars: dark values (>1K LOC repeated!) */</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root,
+[data-theme="light"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
+  <span class="token comment">/* vars: light values (>1K LOC) */</span>
+<span class="token punctuation">}</span>
+<span class="token selector">[data-theme="light"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light<span class="token punctuation">;</span> <span class="token comment">/* lock UA styles to light */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">:root</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* vars: dark values (>1K LOC) */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">[data-theme="dark"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">;</span> <span class="token comment">/* lock UA styles to dark */</span>
+  <span class="token comment">/* vars: dark values (>1K LOC repeated!) */</span>
+<span class="token punctuation">}</span></code></pre>
+<div class="fragment noper">
+  <svg role="presentation" aria-label="Nope" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" focusable="false">
+    <circle stroke="red" stroke-width="2" fill="none" cy="8" cx="8" r="7"></circle>
+    <path stroke="red" stroke-width="2" fill="none" d="M13 3L3 13"></path>
+  </svg>
+</div>
+
+</section>
+
+      
+      <section>
+  <h3><code>light-dark()</code></h3>
+
+</section>
+
+      
+      <section>
+  <p>The new <code>light-dark()</code> function lets you define both values in one line:</p>
+<pre class="language-css"><code class="language-css"><span class="token function">light-dark</span><span class="token punctuation">(</span>&lt;lightValue><span class="token punctuation">,</span> &lt;darkValue><span class="token punctuation">)</span></code></pre>
+<ul>
+<li>Values must be <strong>colors</strong>:
+<ul>
+<li>no strings, numbers, keywords, etc</li>
+</ul>
+</li>
+<li>Firefox supports the next version:
+<ul>
+<li><code>url()</code>, gradients</li>
+</ul>
+</li>
+</ul>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
+
+  <span class="token property">--surface-primary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#eee<span class="token punctuation">,</span> #111<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--surface-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#ccc<span class="token punctuation">,</span> #333<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--text-primary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#111<span class="token punctuation">,</span> #eee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--text-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#333<span class="token punctuation">,</span> #ccc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/* expand to >1K LOC… */</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
+
+  <span class="token property">--surface-primary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#eee<span class="token punctuation">,</span> #111<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--surface-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#ccc<span class="token punctuation">,</span> #333<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--text-primary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#111<span class="token punctuation">,</span> #eee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--text-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#333<span class="token punctuation">,</span> #ccc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/* expand to >1K LOC… */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">[data-theme="light"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light<span class="token punctuation">;</span> <span class="token comment">/* forces &lt;lightValue> */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">[data-theme="dark"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">;</span> <span class="token comment">/* forces &lt;darkValue> */</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-light-dark.png" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 87.24% of global usage.</p>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">"tailwindcss"</span><span class="token punctuation">;</span></span> <span class="token comment">/* v4 */</span>
+
+<span class="token atrule"><span class="token rule">@theme</span></span> <span class="token punctuation">{</span>
+  <span class="token property">--surface-primary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#eee<span class="token punctuation">,</span> #111<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--surface-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#ccc<span class="token punctuation">,</span> #333<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--text-primary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#111<span class="token punctuation">,</span> #eee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--text-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#333<span class="token punctuation">,</span> #ccc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- media query --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>scheme-light-dark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- override --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>scheme-light<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>scheme-dark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+
+</section>
+
+      
+      <section>
+  <h2>Color Manipulation</h2>
+
+</section>
+
+      
+      <section>
+  <pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+
+<span class="token selector">.button.red </span><span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token variable">$red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.red:hover </span><span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">lighten</span><span class="token punctuation">(</span><span class="token variable">$red</span><span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--red</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.red</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.red:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">lighten</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span><span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<div class="fragment noper">
+  <span role="presentation" aria-label="sad trombone" style="font-size: 33vmin">😢🪊</span>
+</div>
+
+</section>
+
+      
+      <section>
+  <h3>CSS Relative Colors</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--red</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.red</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.red:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <p>Existing color functions don’t need commas.</p>
+<pre class="language-css"><code class="language-css"><span class="token function">rgb</span><span class="token punctuation">(</span>25<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 25<span class="token punctuation">)</span>
+<span class="token function">rgb</span><span class="token punctuation">(</span>25 25 25<span class="token punctuation">)</span></code></pre>
+<br>
+<pre class="language-css"><code class="language-css"><span class="token function">hsl</span><span class="token punctuation">(</span>120<span class="token punctuation">,</span> 50<span class="token punctuation">,</span> 50<span class="token punctuation">)</span>
+<span class="token function">hsl</span><span class="token punctuation">(</span>120 50 50<span class="token punctuation">)</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <p>Existing color functions implicitly handle alpha.</p>
+<pre class="language-css"><code class="language-css"><span class="token function">rgb</span><span class="token punctuation">(</span>25<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span>
+<span class="token function">rgb</span><span class="token punctuation">(</span>25 25 25 / 0.8<span class="token punctuation">)</span></code></pre>
+<br>
+<pre class="language-css"><code class="language-css"><span class="token function">hsl</span><span class="token punctuation">(</span>120<span class="token punctuation">,</span> 50<span class="token punctuation">,</span> 50<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span>
+<span class="token function">hsl</span><span class="token punctuation">(</span>120 50 50 / 0.4<span class="token punctuation">)</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <h4>Breaking <code>from</code> down...</h4>
+
+<pre class="break-down__anchor"><code><span class="fragment custom break-down" data-break-down="1">rgb(
+  <span class="fragment custom break-down" data-break-down="2">from</span> <span class="fragment custom break-down" data-break-down="3"
+  >var(--red)</span> <span class="fragment custom break-down" data-break-down="4">r, g, b, alpha</span>
+)</span></code></pre>
+
+<div>
+  <p class="break-down__description">normal CSS color function,<br>
+    could be <code>hsl()</code>, <code>oklch()</code>, etc</p>
+  <p class="break-down__description">extracts channel data from any color</p>
+  <p class="break-down__description">any color or color variable,<br> in any format</p>
+  <p class="break-down__description">output each color channel & alpha,<br> any channel can be overridden</p>
+</div>
+
+</section>
+
+      
+      <section>
+  <p><strong>Reminder:</strong> new syntax, identical output</p>
+<pre class="language-css"><code class="language-css"><span class="token function">rgb</span><span class="token punctuation">(</span>
+  from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> alpha
+<span class="token punctuation">)</span>
+
+<span class="token function">rgb</span><span class="token punctuation">(</span>
+  from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> r g b / alpha
+<span class="token punctuation">)</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <h4>Tints</h4>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--surface-primary--coolest</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--surface-primary<span class="token punctuation">)</span> r g 255
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--surface-primary--warmer</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>
+    from <span class="token function">light-dark</span><span class="token punctuation">(</span>#eee<span class="token punctuation">,</span> #111<span class="token punctuation">)</span> <span class="token function">calc</span><span class="token punctuation">(</span>r + 150<span class="token punctuation">)</span> g b
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <h4>Adjust Alpha</h4>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--surface-primary--shadow</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--surface-primary<span class="token punctuation">)</span> h s l / 0.8
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--surface-primary--shadow-light</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--surface-primary<span class="token punctuation">)</span> r g b / 20%
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <h4>Normalized Lightness</h4>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--surface-primary--dark</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--surface-primary<span class="token punctuation">)</span> h s 20
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--surface-primary--lighten</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--surface-primary<span class="token punctuation">)</span> h s <span class="token function">calc</span><span class="token punctuation">(</span>l + 15<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--red</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+  <span class="token property">--red--100</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 90<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--red--200</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 80<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--red--300</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 70<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--red--400</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 60<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--red--500</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 50<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--red--600</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 40<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--red--700</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 30<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--red--800</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 20<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--red--900</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 10<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--start</span><span class="token punctuation">:</span> dodgerblue<span class="token punctuation">;</span>
+
+  <span class="token property">--primary</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--start<span class="token punctuation">)</span> h s l
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--secondary</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--start<span class="token punctuation">)</span> <span class="token function">calc</span><span class="token punctuation">(</span>h + 120<span class="token punctuation">)</span> 67 33
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--tertiary</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--start<span class="token punctuation">)</span> <span class="token function">calc</span><span class="token punctuation">(</span>h + 240<span class="token punctuation">)</span> 67 33
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-scss"><code class="language-scss"><span class="token keyword">@mixin</span> <span class="token function">button</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$color</span></span><span class="token punctuation">:</span> <span class="token variable">$blue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> color.<span class="token function">scale</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> -15%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> color.<span class="token function">change</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> 90%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> color.<span class="token function">scale</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> -25%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> color.<span class="token function">scale</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> -15%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> color.<span class="token function">change</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> 80%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* other interactive states, etc */</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-scss"><code class="language-scss"><span class="token selector">.button.red </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">button</span><span class="token punctuation">(</span><span class="token variable">$red</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.green </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">button</span><span class="token punctuation">(</span><span class="token variable">$green</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.orange </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> <span class="token function">button</span><span class="token punctuation">(</span><span class="token variable">$orange</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">.button</span> <span class="token punctuation">{</span>
+  <span class="token property">--button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--blue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span> h s <span class="token function">calc</span><span class="token punctuation">(</span>l - 15<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span> h s 90<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.button:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span> h s <span class="token function">calc</span><span class="token punctuation">(</span>l - 25<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
+    from <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span> h s <span class="token function">calc</span><span class="token punctuation">(</span>l - 15<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span> h s 80<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">.button.green</span> <span class="token punctuation">{</span>
+  <span class="token property">--button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--green<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.red</span> <span class="token punctuation">{</span>
+  <span class="token property">--button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button.orange</span> <span class="token punctuation">{</span>
+  <span class="token property">--button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--orange<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section data-background-color="#17140e" data-background-image="images/caniuse.com-css-relative-colors.png" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 89.26% of global usage.</p>
+
+</section>
+
+      
+      <section>
+  <h3>CSS <code>color-mix()</code></h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.button</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">color-mix</span><span class="token punctuation">(</span>
+    in hsl<span class="token punctuation">,</span>
+    <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span> 80%<span class="token punctuation">,</span>
+    <span class="token function">var</span><span class="token punctuation">(</span>--shadow-tint<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <h4>Breaking it down...</h4>
+
+<pre class="break-down__anchor"><code><span class="fragment custom break-down" data-break-down="1">color-mix(
+  <span class="fragment custom break-down" data-break-down="2">in hsl,</span>
+  <span class="fragment custom break-down" data-break-down="3"
+  >var(--button-color) 80%,</span>
+  <span class="fragment custom break-down" data-break-down="4"
+>var(--shadow-tint)</span>
+);</span></code></pre>
+
+<div>
+  <p class="break-down__description">mix 2 colors together,<br>like Sass <code>mix()</code></p>
+  <p class="break-down__description">a color space:<br><code>srgb</code>, <code>hsl</code>, <code>oklch</code>, etc</p>
+  <p class="break-down__description">the first color,<br> optional percentage</p>
+  <p class="break-down__description">the second color,<br> optional percentage</p>
+</div>
+
+</section>
+
+      
+      <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-color-mix.png" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 91.53% of global usage.</p>
+
+</section>
+
+      
+      <section>
+  <h2>Automatic Contrast</h2>
+
+</section>
+
+      
+      <section>
+  <h3>CSS <code>contrast-color()</code></h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">button</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">contrast-color</span><span class="token punctuation">(</span>
+    <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section data-background-color="null" data-background-image="images/birger-strahl-Suaoofu6DXM-unsplash-bw.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only">Photo by <a href="https://unsplash.com/@bist31">Birger Strahl</a> on <a href="https://unsplash.com/photos/zebra-on-brown-grass-field-during-daytime-Suaoofu6DXM">Unsplash</a></p>
+
+</section>
+
+      
+      <section data-background-color="null" data-background-image="images/birger-strahl-Suaoofu6DXM-unsplash.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only">Photo by <a href="https://unsplash.com/@bist31">Birger Strahl</a> on <a href="https://unsplash.com/photos/zebra-on-brown-grass-field-during-daytime-Suaoofu6DXM">Unsplash</a></p>
+<h3 class="overlay">Not everything is <code>black</code> &amp; <code>white</code>&hellip;</h3>
+
+</section>
+
+      
+      <section>
+  <h3><code>color-mix()</code></h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">button</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">color-mix</span><span class="token punctuation">(</span>
+    in hsl<span class="token punctuation">,</span>
+    <span class="token function">contrast-color</span><span class="token punctuation">(</span>
+      <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span> 90%<span class="token punctuation">,</span>
+    <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span> 10%
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-contrast-color.png" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 67.46% of global usage.</p>
+
+</section>
+
+      
+      <section>
+  <h3>Learn More…</h3>
+
+</section>
+
+      
+      <section>
+  <h4><code>light-dark()</code></h4>
+<ul>
+<li><a href="https://m.youtube.com/shorts/XJhMW2QuBiQ">Easier Light/Dark Color Theming</a>, Kevin Powell [video]</li>
+<li><a href="https://nerdy.dev/page-and-component-light-dark-strategies">Page and Component Adaptive Light/Dark</a>, Adam Argyle</li>
+<li><a href="https://daverupert.com/2026/04/inverted-light-dark/">Inverted themes with light-dark()</a>, Dave Rupert</li>
+</ul>
+
+</section>
+
+      
+      <section>
+  <h4>Relative Colors &amp; <code>color-mix()</code></h4>
+<ul>
+<li><a href="https://piccalil.li/blog/a-pragmatic-guide-to-modern-css-colours-part-one/">A pragmatic guide to modern CSS colours - part one</a>, Kevin Powell</li>
+<li><a href="https://piccalil.li/blog/a-pragmatic-guide-to-modern-css-colours-part-two/">A pragmatic guide to modern CSS colours - part two</a>, Kevin Powell</li>
+<li><a href="https://www.alwaystwisted.com/articles/UnSassing-my-CSS-colour-functions">‘Un-Sass’ing My CSS: Colour Functions Without Sass</a>, Stuart Robson</li>
+</ul>
+
+</section>
+
+      
+      <section>
+  <h4><code>contrast-color()</code></h4>
+<ul>
+<li><a href="https://una.im/contrast-color">Automated accessible text with contrast-color(), Una Kravets</a></li>
+<li><a href="https://una.im/advanced-contrast-color/">contrast-color() beyond black &amp; white, Una Kravets</a></li>
+<li><a href="https://piccalil.li/blog/some-css-only-contrast-options-until-contrast-color-is-baseline-widely-available">Some CSS only contrast options until contrast-color() is Baseline widely available</a>, Donnie D’Amato</li>
+</ul>
+
+</section>
+
+      
+      <section>
+  <h2><a href="https://jdsteinbach.com/practical-color-css/"><em>jds.li/css-color</em></a></h2>
+
+</section>
+
+      
+      <section>
+  <h2>Thanks, Y’all! <div aria-hidden="true">👍</div></h2>
+
+</section>
+
+      
+      <section>
+  <h2>James Steinbach</h2>
+<h3 class="mb-2">Senior Front-End Engineer at <a rel="noreferrer noopener nofollow" target="_blank"
+    href="https://delinea.com">
+    <span class="sr-only">Delinea</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 1179 268">
+  <path     d="M46.7 217.3H3.2V42.7h43.4v174.6zm361.7-43.6H270c3 29.5 18.7 49.1 49.3 49.1 20.9 0 36.4-9.4 44.8-27.3l42.1 12.8c-14.9 35.2-48.3 54.5-84.4 54.5-59 0-97.6-41.4-97.6-98.8 0-65.3 41.2-103.1 95.1-103.1 62.5 0 93.7 47.8 89.1 112.8m-43.3-32.2c-3.3-27.7-15.7-43.2-44-43.2s-44.9 14-50.1 43.2zm587.1 32.2H813.8c3 29.5 18.7 49.1 49.3 49.1 20.9 0 36.4-9.4 44.8-27.3l42.1 12.8c-14.9 35.2-48.3 54.5-84.4 54.5-59 0-97.6-41.4-97.6-98.8 0-65.3 41.2-103.1 95.1-103.1 62.5 0 93.7 47.8 89.1 112.8m-43.3-32.2c-3.3-27.7-15.7-43.2-44-43.2s-44.9 14-50.1 43.2zm-481.4 116h42.7V2.5h-42.7zm73.7 0h42.6V66.2h-42.6zm0-210.3h42.6V2.5h-42.6zm174.2 13.7c-25.1 0-46.1 9.7-62.5 31.1V66.2h-38.1v191.2H618v-98.2c0-32.7 12.1-58.3 44.8-58.3 35.4 0 44.6 29.4 44.6 64.5v92h43.2V150.7c0-46.5-18.6-89.8-75.2-89.8m458.8 79.2v117.4h-37.4v-25.8c-17.3 22.8-38.6 31.1-67.2 31.1-41.2 0-64.1-26-64.1-57.7 0-29.4 15-47.6 43.6-57.2 24.9-7.9 56.4-11.5 83.2-15.5-1.8-24.1-15.1-32.2-39.1-32.2-15.3 0-35.9 6.3-41.8 26.7l-39-12.2c4.8-16.1 13.7-29.1 27-38.9q19.95-14.7 53.7-14.7c60.4 0 77.6 33.5 79.9 56.3.9 6.8 1.2 14.4 1.2 22.7m-42.3 27.2c-14.1 2.2-28.4 4.5-43.7 7.5-18.9 3.8-40.7 10.3-40.7 29.6 0 12.9 9.4 24.3 30.8 24.3 31.5 0 52-21.1 53.2-50.4.2-4.1.4-11 .4-11m0-.7c0-.3 0-.4 0 0m0 .4v-.4zM97.2 2.5H46.7v40.2s22.6-.1 37.9 0c12.3.1 19.4 0 28.1 1.9 37.4 7.1 51.6 47.1 51.6 85.4s-14.2 78.2-51.6 85.4c-8.6 1.9-15.8 1.9-28.1 1.9-15.4.1-37.9 0-37.9 0v40.2h50.5c82.7 0 112.2-67.8 112.2-127.5S179.8 2.5 97.2 2.5"
+    fill="#231556" ></path>
+</svg>
+
+  </a></h3>
+<h2><code>jdsteinbach</code></h2>
+<h3><a rel="noreferrer noopener nofollow" target="_blank" href="https://bsky.app/profile/jdsteinbach.com">Bluesky</a> |
+  <a rel="noreferrer noopener nofollow" target="_blank" href="https://github.com/jdsteinbach">Github</a> | <a     href="https://jdsteinbach.com">Blog</a>
+</h3>
+
+</section>
+
+      
+    </div>
+
+    <footer class="colophon">
+      <div class="colophon__logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50.18" height="56" viewBox="0 0 50.18 56" focusable="false"
+          aria-label="CascadiaJS 2020">
+          <rect width="50.18" height="56" fill="#17C37B" ></rect>
+          <path d="M25.09 13.88l4.98 4.98 1.25-1.24-6.23-6.23-6.23 6.23 1.25 1.24 4.98-4.98z" ></path>
+          <path d="M25.09 18.86l8.72 8.72 1.24-1.24-9.96-9.96-9.96 9.96 1.25 1.24 8.71-8.72z" ></path>
+          <path d="M25.09 23.85L37.54 36.3l1.25-1.25-13.7-13.69-13.7 13.69 1.25 1.25z" ></path>
+          <path d="M15.13 36.3l1.25 1.24 8.71-8.71 8.72 8.71 1.24-1.24-9.96-9.96-9.96 9.96z" ></path>
+          <path             d="M48.29 0H0v56h50.18V0zm0 54.1H26V34.67l4.11 4.12 1.25-1.25-6.23-6.22-6.23 6.22 1.25 1.25 4.05-4.09v19.4H1.9V1.9h46.39z" ></path>
+        </svg>
+      </div>
+
+      <a href="https://jdsteinbach.com/practical-color-css/" class="colophon__link">jds.li/css-color</a>
+    </footer>
+  </div>
+
+  <script type="module">
+    import Reveal from './reveal/reveal.mjs'
+
+    const deck = new Reveal({
+      height: 900,
+      width: 1200,
+      hash: true,
+      transition: 'fade'
+    });
+    deck.initialize();
+  </script>
+</body>
+
+</html>

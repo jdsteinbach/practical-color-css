@@ -1,0 +1,60 @@
+<h1>Practical Refactors with Modern CSS Colors — Detailed Outline</h1>
+<h2>1. Introduction</h2>
+<p>James Steinbach presents a hands-on session focused on modern CSS color features. The talk aims to show how to simplify color tokens, dark mode, and theming using new CSS capabilities. By leveraging these features, developers can reduce the number of variables, avoid duplication, and write code with clearer intent, making stylesheets easier to maintain and understand.</p>
+<h2>2. The Problem</h2>
+<p>When design tokens are introduced into a codebase, complexity often increases. Developers strive for a single source of truth for colors, but soon need transparent variants for borders, overlays, and focus states. This leads to Sass color functions, raw RGB channel variables, or other workarounds that clutter the code and increase cognitive overhead (<a href="https://www.alwaystwisted.com/articles/UnSassing-my-CSS-colour-functions">UnSassing My CSS Colour Functions</a>).</p>
+<p>Dark mode introduces further challenges. Supporting <code>prefers-color-scheme</code> means redefining variables for dark mode, and user preferences require theme classes that duplicate color logic. The result is repeated code and a reliance on preprocessors like Sass, which signals that native CSS solutions are overdue (<a href="https://piccalil.li/blog/a-pragmatic-guide-to-modern-css-colours-part-one/">A Pragmatic Guide to Modern CSS Colours</a>).</p>
+<h2>3. The Solution: Modern CSS Color Features</h2>
+<p>Modern CSS introduces features that address these pain points directly. By refactoring a real codebase step by step, we can simplify tokens, remove duplication, and clarify theme logic. The outcomes are measurable: less CSS shipped, fewer variables, and code that’s easier to maintain. The talk will demonstrate these improvements in a practical, hands-on way (<a href="https://m.youtube.com/shorts/XJhMW2QuBiQ">Modern CSS Colors - YouTube</a>).</p>
+<h2>4. Practical Patterns &amp; Techniques</h2>
+<p><strong>Using <code>light-dark()</code> Function</strong><br>
+The <code>light-dark()</code> function allows you to define a color that automatically switches between light and dark variants based on the user’s color scheme. For example:</p>
+<pre class="language-css"><code class="language-css"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#222<span class="token punctuation">,</span> #eee<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This reduces the need for custom properties and media queries for basic color switching (<a href="https://www.bram.us/2026/03/19/more-easy-light-dark-mode-switching-light-dark-is-about-to-support-images/">More Easy Light/Dark Mode Switching</a>).</p>
+<p><strong>Toggling Styles with <code>color-scheme</code> Override</strong><br>
+The <code>color-scheme</code> property lets you specify which color themes your component supports. By setting <code>color-scheme: light dark;</code>, you enable the browser’s built-in form controls and scrollbars to adapt automatically:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This can be combined with custom theming for a seamless experience (<a href="https://daverupert.com/2026/04/inverted-light-dark/">Inverted Light/Dark</a>).</p>
+<p><strong>CSS Relative Colors</strong><br>
+Relative color syntax allows you to derive new colors from existing ones, reducing duplication. For example, you can create a transparent overlay based on a base color:</p>
+<pre class="language-css"><code class="language-css"><span class="token property">--overlay</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--base<span class="token punctuation">)</span> r g b / 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This approach eliminates the need for extra variables or Sass functions (<a href="https://piccalil.li/blog/a-pragmatic-guide-to-modern-css-colours-part-one/">A Pragmatic Guide to Modern CSS Colours</a>).</p>
+<p><strong>New RGB Implied Alpha Syntax</strong><br>
+Modern CSS lets you specify alpha directly in the color function, making it easier to create transparent variants:</p>
+<pre class="language-css"><code class="language-css"><span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>34 34 34 / 0.8<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This is more concise and readable than older approaches.</p>
+<p><strong>Blend Mode for Interactive States</strong><br>
+Instead of defining multiple color variables for hover and active states, you can use blend modes to create interactive effects:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.button:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">mix-blend-mode</span><span class="token punctuation">:</span> lighten<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This reduces the number of variables and keeps your CSS DRY (<a href="https://nerdy.dev/page-and-component-light-dark-strategies">Page and Component Light/Dark Strategies</a>).</p>
+<p><strong>Accessibility: <code>contrast-color()</code> Function</strong><br>
+The <code>contrast-color()</code> function (currently experimental) helps ensure text is readable against any background by automatically picking a contrasting color:</p>
+<pre class="language-css"><code class="language-css"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">contrast-color</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--bg<span class="token punctuation">)</span><span class="token punctuation">,</span> #000<span class="token punctuation">,</span> #fff<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This is especially useful for dynamic themes and improves accessibility (<a href="https://una.im/contrast-color">Contrast Color</a>, <a href="https://una.im/advanced-contrast-color/">Advanced Contrast Color</a>, <a href="https://css-tricks.com/approximating-contrast-color-with-other-css-features/">Approximating Contrast Color with Other CSS Features</a>).</p>
+<h2>5. Hands-On Refactor (Live Demo)</h2>
+<p>The talk will walk through a real-world refactor, applying these modern CSS color techniques to an existing codebase. Each step will be measured for impact: performance gains, reduced CSS size, and improved maintainability. Attendees will see practical before-and-after examples and learn how to adopt these patterns in their own projects.</p>
+<h2>6. Scope (Topics Covered)</h2>
+<p>The session covers:</p>
+<ul>
+<li>Using <code>light-dark()</code> for automatic theme switching</li>
+<li>Leveraging <code>color-scheme</code> for native UI adaptation</li>
+<li>Creating relative colors and using RGB implied alpha for transparency</li>
+<li>Using blend modes for interactive states</li>
+<li>Ensuring accessibility with <code>contrast-color()</code></li>
+</ul>
+<h2>7. References &amp; Further Reading</h2>
+<ul>
+<li><a href="https://piccalil.li/blog/a-pragmatic-guide-to-modern-css-colours-part-one/">A Pragmatic Guide to Modern CSS Colours (Piccalilli)</a></li>
+<li><a href="https://m.youtube.com/shorts/XJhMW2QuBiQ">Modern CSS Colors (YouTube Short)</a></li>
+<li><a href="https://nerdy.dev/page-and-component-light-dark-strategies">Page and Component Light/Dark Strategies (nerdy.dev)</a></li>
+<li><a href="https://daverupert.com/2026/04/inverted-light-dark/">Inverted Light/Dark (Dave Rupert)</a></li>
+<li><a href="https://una.im/contrast-color">Contrast Color (Una Kravets)</a></li>
+<li><a href="https://www.alwaystwisted.com/articles/UnSassing-my-CSS-colour-functions">UnSassing My CSS Colour Functions (Always Twisted)</a></li>
+<li><a href="https://www.bram.us/2026/03/19/more-easy-light-dark-mode-switching-light-dark-is-about-to-support-images/">More Easy Light/Dark Mode Switching (Bram.us)</a></li>
+<li><a href="https://una.im/advanced-contrast-color/">Advanced Contrast Color (Una Kravets)</a></li>
+<li><a href="https://css-tricks.com/approximating-contrast-color-with-other-css-features/">Approximating Contrast Color with Other CSS Features (CSS-Tricks)</a></li>
+</ul>

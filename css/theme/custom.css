@@ -1,0 +1,724 @@
+@charset "UTF-8";
+:root {
+  --r-background: #17C37B;
+  --r-background-color: #17C37B;
+  --r-main-font: canada-type-gibson, Helvetica, sans-serif;
+  --r-main-font-size: 40px;
+  --r-main-color: #112378;
+  --r-block-margin: 20px;
+  --r-heading-margin: 0 0 20px 0;
+  --r-heading-font: mono45-headline, Helvetica, sans-serif;
+  --r-heading-color: #112378;
+  --r-heading-line-height: 1.2;
+  --r-heading-letter-spacing: normal;
+  --r-heading-text-transform: uppercase;
+  --r-heading-text-shadow: none;
+  --r-heading-font-weight: 700;
+  --r-heading1-text-shadow: none;
+  --r-heading1-size: 3.6em;
+  --r-heading2-size: 2.4em;
+  --r-heading3-size: 2em;
+  --r-heading4-size: 1.6em;
+  --r-code-font: ibm-plex-mono, Operator Mono, monospace;
+  --r-link-color: #112378;
+  --r-link-color-dark: rgb(14.45, 29.75, 102);
+  --r-link-color-hover: #0033FF;
+  --r-selection-background-color: rgb(39.9635036496, 72.2189781022, 224.5364963504);
+  --r-selection-color: #fff;
+  --r-overlay-element-bg-color: 240, 240, 240;
+  --r-overlay-element-fg-color: 0, 0, 0;
+}
+
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+body {
+  font-feature-settings: "liga";
+}
+
+section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
+  color: #222;
+}
+
+.reveal section h2, .reveal section h3, .reveal section h4, .reveal section h5, .reveal section h6 {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 60rem;
+  font-weight: 800;
+  text-wrap: balance;
+}
+.reveal section h2 + p,
+.reveal section h2 + ul, .reveal section h3 + p,
+.reveal section h3 + ul, .reveal section h4 + p,
+.reveal section h4 + ul, .reveal section h5 + p,
+.reveal section h5 + ul, .reveal section h6 + p,
+.reveal section h6 + ul {
+  margin-top: 1em;
+}
+.reveal section h2, .reveal section h4, .reveal section h6 {
+  font-family: "ibm-plex-mono", Operator Mono, monospace;
+  text-transform: none;
+}
+.reveal section h2 + h3 {
+  font-family: "canada-type-gibson", Helvetica, sans-serif;
+  text-transform: none;
+  font-weight: 400;
+}
+.reveal section h3:first-child:last-child {
+  font-size: 2.4em;
+}
+.reveal section h2 .h1 {
+  margin-bottom: 0.125em;
+  padding-bottom: 0.125em;
+  display: block;
+  font-family: "mono45-headline", Helvetica, sans-serif;
+  font-size: 1.6em;
+  border-bottom: 0.15em solid currentColor;
+}
+.reveal section h1 em, .reveal section h2 em, .reveal section h3 em, .reveal section h4 em, .reveal section h5 em, .reveal section h6 em {
+  font-style: italic;
+  border-bottom: 0.125em solid currentColor;
+}
+.reveal section h1 a em, .reveal section h2 a em, .reveal section h3 a em, .reveal section h4 a em, .reveal section h5 a em, .reveal section h6 a em {
+  border-bottom: none;
+}
+.reveal section a, .reveal section a:hover, .reveal section a:active {
+  text-decoration: underline !important;
+}
+.reveal section code {
+  font-size: 0.9em;
+}
+.reveal section pre {
+  display: inline-block;
+  width: auto;
+  padding: 1ch;
+  border-radius: 0.25ch;
+  box-sizing: border-box;
+  background-color: #112378;
+  color: #FFD007;
+}
+.reveal section pre code {
+  max-height: 100%;
+  box-sizing: border-box;
+  font-size: 33.3333333333px;
+  line-height: 1.2;
+  overflow-x: scroll;
+  overflow-y: visible;
+}
+.reveal section pre mark {
+  padding: 0 0.25em;
+  font-weight: 800;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.reveal section .small-code + pre code {
+  font-size: 22.8571428571px;
+}
+.reveal section .small-code + pre code,
+.reveal section pre:first-child:only-of-type {
+  padding: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 50vmax #112378;
+}
+.reveal section ul,
+.reveal section ol {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 45rem;
+}
+.reveal section p {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 45rem;
+}
+.reveal section p:first-child:last-child {
+  font-size: 2em;
+}
+.reveal section blockquote {
+  padding: 2em;
+  background-color: #FFD007;
+  box-shadow: none;
+}
+.reveal section i, .reveal section em {
+  font-style: italic;
+}
+.reveal section b, .reveal section strong {
+  font-weight: 600;
+}
+.reveal section .sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+.reveal section .link {
+  margin-left: 0.25em;
+  padding: 0.125em;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.125em;
+  background-color: rgba(var(--r-background-color), 0.25);
+}
+.reveal section .link:hover, .reveal section .link:active {
+  background-color: rgba(0, 51, 255, 0.15);
+}
+.reveal section .link__icon {
+  width: 0.8em;
+  height: 0.8em;
+}
+.reveal .logo {
+  margin-bottom: 0.1em;
+  max-height: 0.75em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0.2em;
+  fill: currentColor;
+}
+.reveal .token.comment, .reveal .token.prolog, .reveal .token.doctype, .reveal .token.cdata {
+  color: rgba(23, 195, 123, 0.6);
+}
+.reveal .token.punctuation {
+  color: rgba(255, 255, 255, 0.6);
+}
+.reveal .token.property, .reveal .token.tag, .reveal .token.constant, .reveal .token.symbol, .reveal .token.deleted {
+  color: rgba(255, 255, 255, 0.8);
+}
+.reveal .token.number {
+  color: rgba(255, 208, 7, 0.8);
+}
+.reveal .token.boolean {
+  color: #fff;
+}
+.reveal .token.selector, .reveal .token.attr-name, .reveal .token.string, .reveal .token.char, .reveal .token.builtin, .reveal .token.inserted {
+  color: #FFD007;
+}
+.reveal .token.operator, .reveal .token.entity, .reveal .token.url, .reveal .token.variable {
+  color: rgba(255, 255, 255, 0.6);
+}
+.reveal .token.atrule, .reveal .token.attr-value, .reveal .token.function, .reveal .token.class-name {
+  color: #17C37B;
+}
+.reveal .token.keyword {
+  color: rgba(255, 255, 255, 0.8);
+}
+.reveal .token.regex, .reveal .token.important {
+  color: rgba(23, 195, 123, 0.8);
+}
+.reveal .token.bold {
+  font-weight: bold;
+}
+.reveal .token.comment,
+.reveal .token.italic {
+  font-style: italic;
+}
+.reveal .break-down {
+  font-weight: normal;
+  color: rgba(255, 208, 7, 0.6);
+}
+.reveal .break-down.current-fragment {
+  font-weight: bold;
+  color: #fff;
+}
+.reveal .break-down__anchor {
+  position: relative;
+  anchor-name: --break-down-anchor;
+}
+.reveal .break-down__description {
+  position: absolute;
+  position-anchor: --break-down-anchor;
+  top: anchor(--break-down-anchor bottom);
+  left: anchor(--break-down-anchor left);
+  right: anchor(--break-down-anchor right);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.reveal .break-down__anchor:has(.current-fragment[data-break-down="1"]) ~ div .break-down__description:nth-child(1) {
+  opacity: 1;
+}
+.reveal .break-down__anchor:has(.current-fragment[data-break-down="2"]) ~ div .break-down__description:nth-child(2) {
+  opacity: 1;
+}
+.reveal .break-down__anchor:has(.current-fragment[data-break-down="3"]) ~ div .break-down__description:nth-child(3) {
+  opacity: 1;
+}
+.reveal .break-down__anchor:has(.current-fragment[data-break-down="4"]) ~ div .break-down__description:nth-child(4) {
+  opacity: 1;
+}
+.reveal .break-down__anchor:has(.current-fragment[data-break-down="5"]) ~ div .break-down__description:nth-child(5) {
+  opacity: 1;
+}
+.reveal .colophon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1;
+}
+.reveal .colophon::after {
+  content: "";
+  display: block;
+  width: 15vw;
+}
+.reveal .colophon__logo {
+  width: 15vw;
+}
+.reveal .colophon__logo svg {
+  height: 8vh;
+  width: auto;
+  fill: #112378;
+}
+.reveal .colophon__link {
+  padding: 0.5em 1em 0.7em;
+  opacity: 0.75;
+  font-family: "ibm-plex-mono", Operator Mono, monospace;
+  font-style: italic;
+  font-size: 0.6666666667em;
+  background-color: var(--r-background);
+}
+.reveal .credit {
+  margin-top: 1.6em;
+  display: inline-grid;
+  grid-template: "before l1 after" auto "before l2 after" auto/auto 1fr auto;
+  align-items: center;
+  justify-content: center;
+  perspective: 1.6em;
+}
+.reveal .credit::before, .reveal .credit::after {
+  content: "☰";
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: credit 2s infinite alternate;
+}
+.reveal .credit::before {
+  grid-area: before;
+  transform: translate(-0.5em, -0.125em) scaleY(4) rotateY(-45deg) scale(0.5);
+}
+.reveal .credit::after {
+  grid-area: after;
+  transform: translate(0.5em, -0.125em) scaleY(4) rotateY(45deg) scale(0.5);
+}
+.reveal .credit strong:first-of-type {
+  grid-area: l1;
+}
+.reveal .credit strong:last-of-type {
+  grid-area: l2;
+}
+@keyframes credit {
+  to {
+    opacity: 0.5;
+  }
+}
+.reveal .slide-background-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reveal [style*=anchor-name] {
+  position: relative;
+}
+.reveal [style*=position-anchor] {
+  position: absolute;
+  margin: 0;
+}
+.reveal .overlay {
+  padding: 1em;
+  background: rgba(17, 35, 120, 0.85);
+  color: #fff;
+  font-weight: 500;
+}
+.reveal .demo-box {
+  border: 2px solid #112378;
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 40rem;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+}
+.reveal .demo-box .button {
+  flex-grow: 1;
+  display: block;
+  background: red;
+  color: #fff;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 2rem;
+  font-size: 2rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.reveal .demo-box__filter-brightness .button.hovered {
+  filter: brightness(0.7);
+}
+.reveal .demo-box__blend-mode .button.hovered {
+  mix-blend-mode: luminosity;
+}
+.reveal .demo-box__rgb-variable {
+  --red: 255, 0, 0;
+}
+.reveal .demo-box__rgb-variable .button {
+  background: rgb(var(--red));
+}
+.reveal .demo-box__rgb-variable .button.hovered {
+  background: rgba(var(--red), 0.8);
+}
+.reveal .noper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  transform: scale(0);
+  transition-duration: 1s !important;
+  transition-timing-function: cubic-bezier(1, 0.5, 0.75, 1.25) !important;
+}
+.reveal .noper.visible {
+  transform: scale(1);
+}
+.reveal .noper svg {
+  height: 50vmin;
+  width: 50vmin;
+  display: block;
+}
+
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+.reveal-viewport {
+  background: var(--r-background);
+  background-color: var(--r-background-color);
+}
+
+.reveal {
+  font-family: var(--r-main-font);
+  font-size: var(--r-main-font-size);
+  font-weight: normal;
+  color: var(--r-main-color);
+}
+
+.reveal ::-moz-selection {
+  color: var(--r-selection-color);
+  background: var(--r-selection-background-color);
+  text-shadow: none;
+}
+
+.reveal ::selection {
+  color: var(--r-selection-color);
+  background: var(--r-selection-background-color);
+  text-shadow: none;
+}
+
+.reveal ::-moz-selection {
+  color: var(--r-selection-color);
+  background: var(--r-selection-background-color);
+  text-shadow: none;
+}
+
+.reveal .slides section,
+.reveal .slides section > section {
+  line-height: 1.3;
+  font-weight: inherit;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: var(--r-heading-margin);
+  color: var(--r-heading-color);
+  font-family: var(--r-heading-font);
+  font-weight: var(--r-heading-font-weight);
+  line-height: var(--r-heading-line-height);
+  letter-spacing: var(--r-heading-letter-spacing);
+  text-transform: var(--r-heading-text-transform);
+  text-shadow: var(--r-heading-text-shadow);
+  word-wrap: break-word;
+}
+
+.reveal h1 {
+  font-size: var(--r-heading1-size);
+}
+
+.reveal h2 {
+  font-size: var(--r-heading2-size);
+}
+
+.reveal h3 {
+  font-size: var(--r-heading3-size);
+}
+
+.reveal h4 {
+  font-size: var(--r-heading4-size);
+}
+
+.reveal h1 {
+  text-shadow: var(--r-heading1-text-shadow);
+}
+
+/*********************************************
+ * OTHER
+ *********************************************/
+.reveal p {
+  margin: var(--r-block-margin) 0;
+  line-height: 1.3;
+}
+
+/* Remove trailing margins after titles */
+.reveal h1:last-child,
+.reveal h2:last-child,
+.reveal h3:last-child,
+.reveal h4:last-child,
+.reveal h5:last-child,
+.reveal h6:last-child {
+  margin-bottom: 0;
+}
+
+/* Ensure certain elements are never larger than the slide itself */
+.reveal img,
+.reveal video,
+.reveal iframe {
+  max-width: 95%;
+  max-height: 95%;
+}
+
+.reveal strong,
+.reveal b {
+  font-weight: bold;
+}
+
+.reveal em {
+  font-style: italic;
+}
+
+.reveal ol,
+.reveal dl,
+.reveal ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 0 1em;
+}
+
+.reveal ol {
+  list-style-type: decimal;
+}
+
+.reveal ul {
+  list-style-type: disc;
+}
+
+.reveal ul ul {
+  list-style-type: square;
+}
+
+.reveal ul ul ul {
+  list-style-type: circle;
+}
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+  display: block;
+  margin-left: 40px;
+}
+
+.reveal dt {
+  font-weight: bold;
+}
+
+.reveal dd {
+  margin-left: 40px;
+}
+
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: var(--r-block-margin) auto;
+  padding: 5px;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: inline-block;
+}
+
+.reveal q {
+  font-style: italic;
+}
+
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: var(--r-block-margin) auto;
+  text-align: left;
+  font-size: 0.55em;
+  font-family: var(--r-code-font);
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.reveal code {
+  font-family: var(--r-code-font);
+  text-transform: none;
+  -moz-tab-size: 2;
+    -o-tab-size: 2;
+       tab-size: 2;
+}
+
+.reveal pre code {
+  display: block;
+  padding: 5px;
+  overflow: auto;
+  max-height: 400px;
+  word-wrap: normal;
+}
+
+.reveal .code-wrapper {
+  white-space: normal;
+}
+
+.reveal .code-wrapper code {
+  white-space: pre;
+}
+
+.reveal table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.reveal table th {
+  font-weight: bold;
+}
+
+.reveal table th,
+.reveal table td {
+  text-align: left;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border-bottom: 1px solid;
+}
+
+.reveal table th[align=center],
+.reveal table td[align=center] {
+  text-align: center;
+}
+
+.reveal table th[align=right],
+.reveal table td[align=right] {
+  text-align: right;
+}
+
+.reveal table tbody tr:last-child th,
+.reveal table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.reveal sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+.reveal sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+.reveal small {
+  display: inline-block;
+  font-size: 0.6em;
+  line-height: 1.2em;
+  vertical-align: top;
+}
+
+.reveal small * {
+  vertical-align: top;
+}
+
+.reveal img {
+  margin: var(--r-block-margin) 0;
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a {
+  color: var(--r-link-color);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.reveal a:hover {
+  color: var(--r-link-color-hover);
+  text-shadow: none;
+  border: none;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: var(--r-link-color-dark);
+}
+
+/*********************************************
+ * Frame helper
+ *********************************************/
+.reveal .r-frame {
+  border: 4px solid var(--r-main-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.reveal a .r-frame {
+  transition: all 0.15s linear;
+}
+
+.reveal a:hover .r-frame {
+  border-color: var(--r-link-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls {
+  color: var(--r-link-color);
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--r-link-color);
+}
+
+/*********************************************
+ * PRINT BACKGROUND
+ *********************************************/
+@media print {
+  .backgrounds {
+    background-color: var(--r-background-color);
+  }
+}
