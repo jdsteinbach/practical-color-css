@@ -122,6 +122,7 @@
       <section>
   <p>The new <code>light-dark()</code> function lets you define both values in one line:</p>
 <pre class="language-css"><code class="language-css"><span class="token function">light-dark</span><span class="token punctuation">(</span>&lt;lightValue><span class="token punctuation">,</span> &lt;darkValue><span class="token punctuation">)</span></code></pre>
+<br>
 <ul>
 <li>Values must be <strong>colors</strong>:
 <ul>
@@ -162,11 +163,9 @@
   <span class="token property">--text-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#333<span class="token punctuation">,</span> #ccc<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment">/* expand to >1K LOC… */</span>
 <span class="token punctuation">}</span>
-
 <span class="token selector">[data-theme="light"]</span> <span class="token punctuation">{</span>
   <span class="token property">color-scheme</span><span class="token punctuation">:</span> light<span class="token punctuation">;</span> <span class="token comment">/* forces &lt;lightValue> */</span>
 <span class="token punctuation">}</span>
-
 <span class="token selector">[data-theme="dark"]</span> <span class="token punctuation">{</span>
   <span class="token property">color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">;</span> <span class="token comment">/* forces &lt;darkValue> */</span>
 <span class="token punctuation">}</span></code></pre>
@@ -176,6 +175,7 @@
       
       <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-light-dark.png" data-background-repeat="no-repeat" data-background-size="contain">
   <p class="sr-only"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 87.24% of global usage.</p>
+<h3 class="overlay"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">87%</a></h3>
 
 </section>
 
@@ -457,6 +457,7 @@
       
       <section data-background-color="#17140e" data-background-image="images/caniuse.com-css-relative-colors.png" data-background-repeat="no-repeat" data-background-size="contain">
   <p class="sr-only"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 89.26% of global usage.</p>
+<h3 class="overlay"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">89%</a></h3>
 
 </section>
 
@@ -497,6 +498,7 @@
       
       <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-color-mix.png" data-background-repeat="no-repeat" data-background-size="contain">
   <p class="sr-only"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 91.53% of global usage.</p>
+<h3 class="overlay"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">91%</a></h3>
 
 </section>
 
@@ -550,6 +552,7 @@
       
       <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-contrast-color.png" data-background-repeat="no-repeat" data-background-size="contain">
   <p class="sr-only"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 67.46% of global usage.</p>
+<h3 class="overlay"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">67%</a></h3>
 
 </section>
 
@@ -593,20 +596,19 @@
 </section>
 
       
+      <section data-background-color="null" data-background-image="images/qrcode-transparent.png" data-background-repeat="no-repeat" data-background-size="contain">
+  
+</section>
+
+      
       <section>
-  <h2><a href="https://jdsteinbach.com/practical-color-css/"><em>jds.li/css-color</em></a></h2>
+  <h3>Thanks, Y’all! <div aria-hidden="true">👍</div></h3>
 
 </section>
 
       
       <section>
-  <h2>Thanks, Y’all! <div aria-hidden="true">👍</div></h2>
-
-</section>
-
-      
-      <section>
-  <h2>James Steinbach</h2>
+  <h1>James Steinbach</h1>
 <h3 class="mb-2">Senior Front-End Engineer at <a rel="noreferrer noopener nofollow" target="_blank"
     href="https://delinea.com">
     <span class="sr-only">Delinea</span>
@@ -647,8 +649,8 @@
     import Reveal from './reveal/reveal.mjs'
 
     const deck = new Reveal({
-      height: 900,
-      width: 1200,
+      height: 1080,
+      width: 1920 * 0.95,
       hash: true,
       transition: 'fade'
     });

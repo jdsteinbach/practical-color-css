@@ -3,7 +3,7 @@
   --r-background: #17C37B;
   --r-background-color: #17C37B;
   --r-main-font: canada-type-gibson, Helvetica, sans-serif;
-  --r-main-font-size: 40px;
+  --r-main-font-size: 50px;
   --r-main-color: #112378;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
@@ -29,11 +29,6 @@
   --r-overlay-element-fg-color: 0, 0, 0;
 }
 
-/**
- * Black theme for reveal.js. This is the opposite of the 'white' theme.
- *
- * By Hakim El Hattab, http://hakim.se
- */
 body {
   font-feature-settings: "liga";
 }
@@ -61,6 +56,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-family: "ibm-plex-mono", Operator Mono, monospace;
   text-transform: none;
 }
+.reveal section h1 + h3,
 .reveal section h2 + h3 {
   font-family: "canada-type-gibson", Helvetica, sans-serif;
   text-transform: none;
@@ -85,7 +81,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   border-bottom: none;
 }
 .reveal section a, .reveal section a:hover, .reveal section a:active {
-  text-decoration: underline !important;
+  text-decoration: underline;
 }
 .reveal section code {
   font-size: 0.9em;
@@ -102,7 +98,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal section pre code {
   max-height: 100%;
   box-sizing: border-box;
-  font-size: 33.3333333333px;
+  font-size: 41.6666666667px;
   line-height: 1.2;
   overflow-x: scroll;
   overflow-y: visible;
@@ -114,7 +110,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   background-color: rgba(0, 0, 0, 0.2);
 }
 .reveal section .small-code + pre code {
-  font-size: 22.8571428571px;
+  font-size: 28.5714285714px;
 }
 .reveal section .small-code + pre code,
 .reveal section pre:first-child:only-of-type {
@@ -126,15 +122,18 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal section ol {
   margin-right: auto;
   margin-left: auto;
-  max-width: 45rem;
+  max-width: 22em;
 }
 .reveal section p {
   margin-right: auto;
   margin-left: auto;
-  max-width: 45rem;
+  max-width: 22em;
 }
 .reveal section p:first-child:last-child {
   font-size: 2em;
+}
+.reveal section .p--large {
+  font-size: 1.6em;
 }
 .reveal section blockquote {
   padding: 2em;
@@ -279,7 +278,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   opacity: 0.75;
   font-family: "ibm-plex-mono", Operator Mono, monospace;
   font-style: italic;
-  font-size: 0.6666666667em;
+  font-size: 4.9443757726vh;
   background-color: var(--r-background);
 }
 .reveal .credit {
@@ -328,10 +327,19 @@ section.has-light-background, section.has-light-background h1, section.has-light
   margin: 0;
 }
 .reveal .overlay {
+  display: inline-block;
   padding: 1em;
   background: rgba(17, 35, 120, 0.85);
   color: #fff;
   font-weight: 500;
+}
+.reveal .overlay a {
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+}
+.reveal .overlay a:hover {
+  color: rgb(127.5, 153, 255);
 }
 .reveal .demo-box {
   border: 2px solid #112378;
