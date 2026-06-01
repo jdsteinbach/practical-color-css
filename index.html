@@ -596,11 +596,6 @@
 </section>
 
       
-      <section data-background-color="null" data-background-image="images/qrcode-transparent.png" data-background-repeat="no-repeat" data-background-size="contain">
-  
-</section>
-
-      
       <section>
   <h3>Thanks, Y’all! <div aria-hidden="true">👍</div></h3>
 
@@ -626,6 +621,11 @@
 </section>
 
       
+      <section data-background-color="null" data-background-image="images/qrcode-transparent.png" data-background-repeat="no-repeat" data-background-size="contain">
+  
+</section>
+
+      
     </div>
 
     <footer class="colophon">
@@ -648,9 +648,11 @@
   <script type="module">
     import Reveal from './reveal/reveal.mjs'
 
+    const scale = .9
+
     const deck = new Reveal({
-      height: 1080,
-      width: 1920 * 0.95,
+      height: 1080 * scale,
+      width: 1920 * 0.95 * scale,
       hash: true,
       transition: 'fade'
     });
