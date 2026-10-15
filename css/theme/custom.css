@@ -1,47 +1,88 @@
 @charset "UTF-8";
 :root {
-  --r-background: #17C37B;
-  --r-background-color: #17C37B;
-  --r-main-font: canada-type-gibson, Helvetica, sans-serif;
-  --r-main-font-size: 50px;
-  --r-main-color: #112378;
+  --r-background: rgb(247.65, 244.55, 248.5);
+  --r-background-color: rgb(247.65, 244.55, 248.5);
+  --r-main-font: IBMPlexSans, Helvetica, sans-serif;
+  --r-main-font-size: 52px;
+  --r-main-color: #222;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
-  --r-heading-font: mono45-headline, Helvetica, sans-serif;
-  --r-heading-color: #112378;
+  --r-heading-font: IBMPlexSans, Helvetica, sans-serif;
+  --r-heading-color: #6c2e7d;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
   --r-heading-text-transform: uppercase;
   --r-heading-text-shadow: none;
   --r-heading-font-weight: 700;
   --r-heading1-text-shadow: none;
-  --r-heading1-size: 3.6em;
-  --r-heading2-size: 2.4em;
-  --r-heading3-size: 2em;
-  --r-heading4-size: 1.6em;
-  --r-code-font: ibm-plex-mono, Operator Mono, monospace;
-  --r-link-color: #112378;
-  --r-link-color-dark: rgb(14.45, 29.75, 102);
-  --r-link-color-hover: #0033FF;
-  --r-selection-background-color: rgb(39.9635036496, 72.2189781022, 224.5364963504);
+  --r-heading1-size: 2.618em;
+  --r-heading2-size: 2.058em;
+  --r-heading3-size: 1.618em;
+  --r-heading4-size: 1.272em;
+  --r-code-font: IBMPlexMono, Operator Mono, monospace;
+  --r-link-color: #025b9f;
+  --r-link-color-dark: rgb(1.7, 77.35, 135.15);
+  --r-link-color-hover: rgb(1.8, 81.9, 143.1);
+  --r-selection-background-color: rgb(36.251552795, 158.6956521739, 252.248447205);
   --r-selection-color: #fff;
   --r-overlay-element-bg-color: 240, 240, 240;
   --r-overlay-element-fg-color: 0, 0, 0;
 }
 
+@font-face {
+  font-family: "IBMPlexSans";
+  src: url("/assets/fonts/IBMPlexSans-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBMPlexSans";
+  src: url("/assets/fonts/IBMPlexSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: "IBMPlexMono";
+  src: url("/assets/fonts/IBMPlexMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBMPlexMono";
+  src: url("/assets/fonts/IBMPlexMono-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "IBMPlexMono";
+  src: url("/assets/fonts/IBMPlexMono-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBMPlexMono";
+  src: url("/assets/fonts/IBMPlexMono-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
 body {
   font-feature-settings: "liga";
 }
 
-section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
-  color: #222;
+.reveal section h1 {
+  font-weight: 900;
+  font-stretch: 75%;
 }
-
+.reveal section .lighter {
+  opacity: 0.5;
+  font-weight: 100;
+}
 .reveal section h2, .reveal section h3, .reveal section h4, .reveal section h5, .reveal section h6 {
   margin-right: auto;
   margin-left: auto;
-  max-width: 60rem;
-  font-weight: 800;
+  max-width: 64rem;
+  font-weight: 900;
+  font-stretch: 75%;
   text-wrap: balance;
 }
 .reveal section h2 + p,
@@ -53,23 +94,23 @@ section.has-light-background, section.has-light-background h1, section.has-light
   margin-top: 1em;
 }
 .reveal section h2, .reveal section h4, .reveal section h6 {
-  font-family: "ibm-plex-mono", Operator Mono, monospace;
+  font-weight: 700;
+  font-stretch: 100%;
   text-transform: none;
 }
 .reveal section h1 + h3,
 .reveal section h2 + h3 {
-  font-family: "canada-type-gibson", Helvetica, sans-serif;
   text-transform: none;
   font-weight: 400;
+  font-stretch: 100%;
 }
 .reveal section h3:first-child:last-child {
-  font-size: 2.4em;
+  font-size: 2.058em;
 }
 .reveal section h2 .h1 {
   margin-bottom: 0.125em;
   padding-bottom: 0.125em;
   display: block;
-  font-family: "mono45-headline", Helvetica, sans-serif;
   font-size: 1.6em;
   border-bottom: 0.15em solid currentColor;
 }
@@ -89,16 +130,16 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal section pre {
   display: inline-block;
   width: auto;
-  padding: 1ch;
-  border-radius: 0.25ch;
+  padding: 3.0902348578vmin;
+  border-radius: 5vmin;
   box-sizing: border-box;
-  background-color: #112378;
-  color: #FFD007;
+  background-color: #222;
+  color: #f0a86e;
 }
 .reveal section pre code {
   max-height: 100%;
   box-sizing: border-box;
-  font-size: 41.6666666667px;
+  font-size: 43.3333333333px;
   line-height: 1.2;
   overflow-x: scroll;
   overflow-y: visible;
@@ -110,13 +151,13 @@ section.has-light-background, section.has-light-background h1, section.has-light
   background-color: rgba(0, 0, 0, 0.2);
 }
 .reveal section .small-code + pre code {
-  font-size: 28.5714285714px;
+  font-size: 29.7142857143px;
 }
 .reveal section .small-code + pre code,
 .reveal section pre:first-child:only-of-type {
   padding: 0;
   border-radius: 0;
-  box-shadow: 0 0 0 50vmax #112378;
+  box-shadow: 0 0 0 50vmax #222;
 }
 .reveal section ul,
 .reveal section ol {
@@ -130,14 +171,17 @@ section.has-light-background, section.has-light-background h1, section.has-light
   max-width: 22em;
 }
 .reveal section p:first-child:last-child {
-  font-size: 2em;
+  font-size: 1.618em;
+}
+.reveal section p:not(:last-child) {
+  margin-bottom: 1em;
 }
 .reveal section .p--large {
-  font-size: 1.6em;
+  font-size: 1.272em;
 }
 .reveal section blockquote {
-  padding: 2em;
-  background-color: #FFD007;
+  padding: 1.618em;
+  background-color: #f0a86e;
   box-shadow: none;
 }
 .reveal section i, .reveal section em {
@@ -162,49 +206,52 @@ section.has-light-background, section.has-light-background h1, section.has-light
   background-color: rgba(var(--r-background-color), 0.25);
 }
 .reveal section .link:hover, .reveal section .link:active {
-  background-color: rgba(0, 51, 255, 0.15);
+  background-color: rgba(1.8, 81.9, 143.1, 0.15);
 }
 .reveal section .link__icon {
   width: 0.8em;
   height: 0.8em;
 }
+.reveal section.has-dark-background h1, .reveal section.has-dark-background h2, .reveal section.has-dark-background h3, .reveal section.has-dark-background h4, .reveal section.has-dark-background h5, .reveal section.has-dark-background h6, .reveal section.has-dark-background p, .reveal section.has-dark-background ul, .reveal section.has-dark-background ol, .reveal section.has-dark-background blockquote {
+  color: rgb(247.65, 244.55, 248.5);
+}
 .reveal .logo {
-  margin-bottom: 0.1em;
-  max-height: 0.75em;
+  margin-bottom: 0;
+  max-height: 1em;
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 0.2em;
   fill: currentColor;
 }
 .reveal .token.comment, .reveal .token.prolog, .reveal .token.doctype, .reveal .token.cdata {
-  color: rgba(23, 195, 123, 0.6);
+  color: rgb(247.65, 244.55, 248.5);
 }
 .reveal .token.punctuation {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgb(189.66, 216.74, 244.24);
 }
 .reveal .token.property, .reveal .token.tag, .reveal .token.constant, .reveal .token.symbol, .reveal .token.deleted {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(227.93, 195.95, 237.7);
 }
 .reveal .token.number {
-  color: rgba(255, 208, 7, 0.8);
+  color: rgb(243.06, 198.62, 165.4);
 }
 .reveal .token.boolean {
-  color: #fff;
+  color: rgb(208.99, 226.01, 245.66);
 }
 .reveal .token.selector, .reveal .token.attr-name, .reveal .token.string, .reveal .token.char, .reveal .token.builtin, .reveal .token.inserted {
-  color: #FFD007;
+  color: rgb(244.59, 213.93, 193.1);
 }
 .reveal .token.operator, .reveal .token.entity, .reveal .token.url, .reveal .token.variable {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgb(232.86, 208.1, 240.4);
 }
 .reveal .token.atrule, .reveal .token.attr-value, .reveal .token.function, .reveal .token.class-name {
-  color: #17C37B;
+  color: rgb(247.65, 244.55, 248.5);
 }
 .reveal .token.keyword {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(170.33, 207.47, 242.82);
 }
 .reveal .token.regex, .reveal .token.important {
-  color: rgba(23, 195, 123, 0.8);
+  color: rgb(247.65, 244.55, 248.5);
 }
 .reveal .token.bold {
   font-weight: bold;
@@ -215,7 +262,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 .reveal .break-down {
   font-weight: normal;
-  color: rgba(255, 208, 7, 0.6);
+  color: rgba(240, 168, 110, 0.85);
 }
 .reveal .break-down.current-fragment {
   font-weight: bold;
@@ -271,15 +318,22 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal .colophon__logo svg {
   height: 8vh;
   width: auto;
-  fill: #112378;
+  fill: #222;
 }
 .reveal .colophon__link {
   padding: 0.5em 1em 0.7em;
-  opacity: 0.75;
-  font-family: "ibm-plex-mono", Operator Mono, monospace;
+  font-family: "IBMPlexMono", Operator Mono, monospace;
   font-style: italic;
-  font-size: 4.9443757726vmin;
-  background-color: var(--r-background);
+  font-size: 3.7082818294vmin;
+  border-radius: 5vmin;
+  border: 1px solid rgb(from var(--r-background) r g b/0.75);
+  background-color: rgb(from var(--r-background) r g b/0.67);
+  backdrop-filter: blur(1vmin);
+  transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+}
+.reveal .colophon__link:hover, .reveal .colophon__link:active {
+  border: 1px solid rgb(from var(--r-background) r g b/1);
+  background-color: rgb(from var(--r-background) r g b/1);
 }
 .reveal .credit {
   margin-top: 1.6em;
@@ -328,21 +382,46 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 .reveal .overlay {
   display: inline-block;
-  padding: 1em;
-  background: rgba(17, 35, 120, 0.85);
-  color: #fff;
+  padding: 1em 1em 1.3em;
+  border-radius: 5vmin;
+  border: 1px solid rgb(from var(--r-background) r g b/0.5);
+  background-color: rgb(from var(--r-main-color) r g b/0.5);
+  backdrop-filter: blur(1vmin);
+  color: var(--r-background);
   font-weight: 500;
 }
+.reveal .overlay.darker {
+  border: 1px solid rgb(from var(--r-background) r g b/0.75);
+  background-color: rgb(from var(--r-main-color) r g b/0.75);
+  backdrop-filter: blur(2vmin);
+}
 .reveal .overlay a {
-  color: #fff;
-  font-size: 2em;
+  color: var(--r-background);
+  font-size: 1.618em;
   font-weight: bold;
 }
 .reveal .overlay a:hover {
-  color: rgb(127.5, 153, 255);
+  color: rgb(128.4, 168.45, 199.05);
+}
+.reveal .grid {
+  margin-top: 1.618em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vmin;
+  align-items: top;
+}
+.reveal .grid svg {
+  margin: 0 auto;
+  width: 40vmax;
+  height: auto;
+}
+.reveal .grid figcaption {
+  margin-top: 0.618em;
+  font-style: italic;
+  font-size: 0.618em;
 }
 .reveal .demo-box {
-  border: 2px solid #112378;
+  border: 2px solid #222;
   padding: 2rem;
   margin: 1rem auto;
   max-width: 40rem;
@@ -389,12 +468,13 @@ section.has-light-background, section.has-light-background h1, section.has-light
   bottom: 0;
   left: 0;
   z-index: 1;
-  transform: scale(0);
+  opacity: 0;
   transition-duration: 1s !important;
   transition-timing-function: cubic-bezier(1, 0.5, 0.75, 1.25) !important;
+  background-color: rgba(34, 34, 34, 0.85);
 }
 .reveal .noper.visible {
-  transform: scale(1);
+  opacity: 1;
 }
 .reveal .noper svg {
   height: 50vmin;

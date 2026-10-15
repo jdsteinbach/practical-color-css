@@ -11,22 +11,45 @@
   <link rel="stylesheet" href="reveal/reset.css">
   <link rel="stylesheet" href="reveal/reveal.css">
   <link rel="stylesheet" href="css/theme/custom.css">
-
-  <link rel="stylesheet" href="https://use.typekit.net/pzu4dhu.css">
 </head>
 
 <body class="">
   <div class="reveal">
     <div class="slides">
       
-      <section>
+      <section data-background-color="#222">
   <h1>Practical Refactors with Modern CSS Colors</h1>
 
 </section>
 
       
       <section>
-  <h2>Theming</h2>
+  <h2>No one wants to design inaccessible color schemes.</h2>
+
+</section>
+
+      
+      <section>
+  <h4>Reduce Complexity</h4>
+<p>⬇</p>
+<h4>Reduce Code</h4>
+<p>⬇</p>
+<h4>Reduce Errors</h4>
+
+</section>
+
+      
+      <section>
+  <h3>Roadmap</h3>
+<h6>1. Simplify Theming</h6>
+<h6>2. Simplify Variations</h6>
+<h6>3. Simplify Contrast</h6>
+
+</section>
+
+      
+      <section data-background-color="#222">
+  <h2>Simplify Theming</h2>
 
 </section>
 
@@ -173,9 +196,28 @@
 </section>
 
       
-      <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-light-dark.png" data-background-repeat="no-repeat" data-background-size="contain">
-  <p class="sr-only"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 87.24% of global usage.</p>
-<h3 class="overlay"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">87%</a></h3>
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
+
+  <span class="token property">--surface-primary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#eee<span class="token punctuation">,</span> #111<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--surface-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#ccc<span class="token punctuation">,</span> #333<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--text-primary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#111<span class="token punctuation">,</span> #eee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--text-secondary</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>#333<span class="token punctuation">,</span> #ccc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/* expand to >1K LOC… */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Force &lt;lightValue> override */</span>
+<span class="token selector">.document-canvas</span> <span class="token punctuation">{</span>
+  <span class="token property">color-scheme</span><span class="token punctuation">:</span> light<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section data-background-color="#222" data-background-image="assets/images/ciu-light-dark.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 91.28% of global usage.</p>
+<h3 class="overlay"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">91%</a></h3>
 
 </section>
 
@@ -199,8 +241,14 @@
 </section>
 
       
+      <section data-background-color="#222">
+  <h2>Simplify Variations</h2>
+
+</section>
+
+      
       <section>
-  <h2>Color Manipulation</h2>
+  <h3>Real-time Color Manipulation</h3>
 
 </section>
 
@@ -267,7 +315,7 @@
 
       
       <section>
-  <p>Existing color functions implicitly handle alpha.</p>
+  <p>Existing color functions implicitly handle <code>alpha</code>.</p>
 <pre class="language-css"><code class="language-css"><span class="token function">rgb</span><span class="token punctuation">(</span>25<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span>
 <span class="token function">rgb</span><span class="token punctuation">(</span>25 25 25 / 0.8<span class="token punctuation">)</span></code></pre>
 <br>
@@ -455,9 +503,9 @@
 </section>
 
       
-      <section data-background-color="#17140e" data-background-image="images/caniuse.com-css-relative-colors.png" data-background-repeat="no-repeat" data-background-size="contain">
-  <p class="sr-only"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 89.26% of global usage.</p>
-<h3 class="overlay"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">89%</a></h3>
+      <section data-background-color="#222" data-background-image="assets/images/ciu-relative-colors.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 93.45% of global usage.</p>
+<h3 class="overlay"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">93%</a></h3>
 
 </section>
 
@@ -496,15 +544,78 @@
 </section>
 
       
-      <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-color-mix.png" data-background-repeat="no-repeat" data-background-size="contain">
-  <p class="sr-only"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 91.53% of global usage.</p>
-<h3 class="overlay"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">91%</a></h3>
+      <section data-background-color="#222" data-background-image="assets/images/ciu-color-mix.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 94.79% of global usage.</p>
+<h3 class="overlay"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">94%</a></h3>
+
+</section>
+
+      
+      <section data-background-color="#222">
+  <h2>Contrast &amp; Accessibility</h2>
 
 </section>
 
       
       <section>
-  <h2>Automatic Contrast</h2>
+  <h3>User Color Overrides</h3>
+
+</section>
+
+      
+      <section>
+  <h4>Windows Contrast Themes</h4>
+<p>Activates 2 MQ values:</p>
+<ul>
+<li><code>prefers-contrast: more</code></li>
+<li><code>forced-colors: active</code></li>
+</ul>
+<p>“Forced colors” (values from the theme) override all CSS.</p>
+<p>Using fancy new color functions won’t break Contrast Themes.</p>
+
+</section>
+
+      
+      <section>
+  <h4>macOS <strong>Increase Contrast</strong></h4>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-contrast</span><span class="token punctuation">:</span> more<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">forced-colors</span><span class="token punctuation">:</span> none<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--input-border</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--base-border<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-contrast</span><span class="token punctuation">:</span> more<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">forced-colors</span><span class="token punctuation">:</span> none<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">:root</span> <span class="token punctuation">{</span>
+    <span class="token property">--input-border</span><span class="token punctuation">:</span> <span class="token function">color-mix</span><span class="token punctuation">(</span>
+      in oklch<span class="token punctuation">,</span>
+      <span class="token function">var</span><span class="token punctuation">(</span>--base-border<span class="token punctuation">)</span> 75%<span class="token punctuation">,</span>
+      <span class="token function">var</span><span class="token punctuation">(</span>--text-primary<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+</section>
+
+      
+      <section>
+  <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--input-border</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--base-border<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-contrast</span><span class="token punctuation">:</span> more<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">forced-colors</span><span class="token punctuation">:</span> none<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">:root</span> <span class="token punctuation">{</span>
+    <span class="token property">--input-border</span><span class="token punctuation">:</span> <span class="token function">color-mix</span><span class="token punctuation">(</span>
+      in oklch<span class="token punctuation">,</span>
+      <span class="token function">var</span><span class="token punctuation">(</span>--base-border<span class="token punctuation">)</span> 75%<span class="token punctuation">,</span>
+      CanvasText
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 
 </section>
 
@@ -521,15 +632,15 @@
 </section>
 
       
-      <section data-background-color="null" data-background-image="images/birger-strahl-Suaoofu6DXM-unsplash-bw.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+      <section data-background-color="#222" data-background-image="assets/images/birger-strahl-Suaoofu6DXM-unsplash-bw.jpg" data-background-repeat="no-repeat" data-background-size="cover">
   <p class="sr-only">Photo by <a href="https://unsplash.com/@bist31">Birger Strahl</a> on <a href="https://unsplash.com/photos/zebra-on-brown-grass-field-during-daytime-Suaoofu6DXM">Unsplash</a></p>
 
 </section>
 
       
-      <section data-background-color="null" data-background-image="images/birger-strahl-Suaoofu6DXM-unsplash.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+      <section data-background-color="#222" data-background-image="assets/images/birger-strahl-Suaoofu6DXM-unsplash.jpg" data-background-repeat="no-repeat" data-background-size="cover">
   <p class="sr-only">Photo by <a href="https://unsplash.com/@bist31">Birger Strahl</a> on <a href="https://unsplash.com/photos/zebra-on-brown-grass-field-during-daytime-Suaoofu6DXM">Unsplash</a></p>
-<h3 class="overlay">Not everything is <code>black</code> &amp; <code>white</code>&hellip;</h3>
+<h3 class="overlay darker fragment">Not everything is <code>black</code> &amp; <code>white</code>&hellip;</h3>
 
 </section>
 
@@ -550,9 +661,17 @@
 </section>
 
       
-      <section data-background-color="#17140e" data-background-image="images/caniuse.com-wf-contrast-color.png" data-background-repeat="no-repeat" data-background-size="contain">
-  <p class="sr-only"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 67.46% of global usage.</p>
-<h3 class="overlay"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">67%</a></h3>
+      <section>
+  <h3>Color Functions &amp; Forced Colors</h3>
+<p>Can fancy color functions mess up forced colors?</p>
+<p class="fragment"><b>No,</b> forced colors replace colors at the property, not in function output.</p>
+
+</section>
+
+      
+      <section data-background-color="#222" data-background-image="assets/images/ciu-contrast-color.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+  <p class="sr-only"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 82.81% of global usage.</p>
+<h3 class="overlay"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">82%</a></h3>
 
 </section>
 
@@ -586,6 +705,17 @@
 
       
       <section>
+  <h3>Contrast &amp; A11Y</h3>
+<ul>
+<li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors">forced-colors</a></li>
+<li><a href="https://firefox-source-docs.mozilla.org/accessible/HCMMediaQueries.html">High Contrast Mode (HCM) Media Queries</a>, Firefox Source Docs</li>
+<li><a href="https://kilianvalkhof.com/2023/css-html/i-no-longer-understand-prefers-contrast/">I no longer understand prefers-contrast</a>, Kilian Valkhof</li>
+</ul>
+
+</section>
+
+      
+      <section>
   <h4><code>contrast-color()</code></h4>
 <ul>
 <li><a href="https://una.im/contrast-color">Automated accessible text with contrast-color()</a>, Una Kravets</li>
@@ -603,26 +733,60 @@
 
       
       <section>
-  <h1>James Steinbach</h1>
-<h3 class="mb-2">Senior Front-End Engineer at <a rel="noreferrer noopener nofollow" target="_blank"
-    href="https://delinea.com">
-    <span class="sr-only">Delinea</span>
-    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 1179 268">
-  <path     d="M46.7 217.3H3.2V42.7h43.4v174.6zm361.7-43.6H270c3 29.5 18.7 49.1 49.3 49.1 20.9 0 36.4-9.4 44.8-27.3l42.1 12.8c-14.9 35.2-48.3 54.5-84.4 54.5-59 0-97.6-41.4-97.6-98.8 0-65.3 41.2-103.1 95.1-103.1 62.5 0 93.7 47.8 89.1 112.8m-43.3-32.2c-3.3-27.7-15.7-43.2-44-43.2s-44.9 14-50.1 43.2zm587.1 32.2H813.8c3 29.5 18.7 49.1 49.3 49.1 20.9 0 36.4-9.4 44.8-27.3l42.1 12.8c-14.9 35.2-48.3 54.5-84.4 54.5-59 0-97.6-41.4-97.6-98.8 0-65.3 41.2-103.1 95.1-103.1 62.5 0 93.7 47.8 89.1 112.8m-43.3-32.2c-3.3-27.7-15.7-43.2-44-43.2s-44.9 14-50.1 43.2zm-481.4 116h42.7V2.5h-42.7zm73.7 0h42.6V66.2h-42.6zm0-210.3h42.6V2.5h-42.6zm174.2 13.7c-25.1 0-46.1 9.7-62.5 31.1V66.2h-38.1v191.2H618v-98.2c0-32.7 12.1-58.3 44.8-58.3 35.4 0 44.6 29.4 44.6 64.5v92h43.2V150.7c0-46.5-18.6-89.8-75.2-89.8m458.8 79.2v117.4h-37.4v-25.8c-17.3 22.8-38.6 31.1-67.2 31.1-41.2 0-64.1-26-64.1-57.7 0-29.4 15-47.6 43.6-57.2 24.9-7.9 56.4-11.5 83.2-15.5-1.8-24.1-15.1-32.2-39.1-32.2-15.3 0-35.9 6.3-41.8 26.7l-39-12.2c4.8-16.1 13.7-29.1 27-38.9q19.95-14.7 53.7-14.7c60.4 0 77.6 33.5 79.9 56.3.9 6.8 1.2 14.4 1.2 22.7m-42.3 27.2c-14.1 2.2-28.4 4.5-43.7 7.5-18.9 3.8-40.7 10.3-40.7 29.6 0 12.9 9.4 24.3 30.8 24.3 31.5 0 52-21.1 53.2-50.4.2-4.1.4-11 .4-11m0-.7c0-.3 0-.4 0 0m0 .4v-.4zM97.2 2.5H46.7v40.2s22.6-.1 37.9 0c12.3.1 19.4 0 28.1 1.9 37.4 7.1 51.6 47.1 51.6 85.4s-14.2 78.2-51.6 85.4c-8.6 1.9-15.8 1.9-28.1 1.9-15.4.1-37.9 0-37.9 0v40.2h50.5c82.7 0 112.2-67.8 112.2-127.5S179.8 2.5 97.2 2.5"
-    fill="#231556" ></path>
+  <h3>Practical Refactors with Modern CSS Colors</h3>
+
+<div class="grid">
+  <figure class="col">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="4 4 33 33" shape-rendering="crispEdges">
+  <path stroke="#000000"
+    d="M4 4.5h7m1 0h2m1 0h1m1 0h1m2 0h5m2 0h1m2 0h7M4 5.5h1m5 0h1m1 0h2m3 0h1m4 0h1m2 0h4m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m3 0h1m1 0h1m4 0h1m3 0h2m1 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h3m3 0h3m1 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m2 0h1m1 0h4m5 0h2m1 0h1m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h3m1 0h1m3 0h4m1 0h1m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m2 0h1m5 0h2m1 0h1m1 0h1m1 0h1M4 12.5h1m1 0h2m1 0h3m2 0h1m1 0h1m1 0h1m2 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h2M8 13.5h2m1 0h1m4 0h1m3 0h1m1 0h4m1 0h1m2 0h2m1 0h2m1 0h1M4 14.5h1m1 0h2m1 0h2m2 0h1m4 0h1m1 0h2m2 0h1m2 0h1m2 0h4m2 0h1M8 15.5h2m3 0h8m1 0h1m1 0h1m3 0h4m1 0h1m1 0h1M5 16.5h3m1 0h3m1 0h3m3 0h1m2 0h2m1 0h1m2 0h1m3 0h2m1 0h2M11 17.5h1m1 0h2m1 0h2m2 0h1m1 0h1m2 0h2m4 0h1m2 0h2M4 18.5h1m2 0h5m1 0h1m1 0h1m3 0h2m1 0h1m2 0h1m2 0h1m1 0h2m1 0h1M4 19.5h1m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m2 0h1m2 0h3m1 0h4m1 0h3M4 20.5h1m2 0h1m1 0h2m2 0h7m3 0h8m1 0h3M5 21.5h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m3 0h6m1 0h2m1 0h2M10 22.5h1m2 0h9m4 0h1m2 0h4m1 0h2M4 23.5h1m1 0h1m1 0h2m3 0h1m2 0h2m6 0h2m3 0h2m1 0h1m2 0h2M4 24.5h1m2 0h1m2 0h2m2 0h1m1 0h2m4 0h1m1 0h1m3 0h1m4 0h3M4 25.5h1m1 0h1m5 0h1m1 0h2m2 0h2m1 0h2m2 0h1m1 0h1m2 0h1m3 0h1m1 0h1M7 26.5h1m2 0h1m2 0h2m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2m5 0h3M5 27.5h1m2 0h2m10 0h1m1 0h2m2 0h2m1 0h3m1 0h1m1 0h1M4 28.5h1m1 0h2m1 0h3m1 0h2m1 0h4m1 0h1m4 0h1m1 0h5m2 0h2M12 29.5h4m1 0h1m1 0h5m4 0h1m3 0h2M4 30.5h7m1 0h2m1 0h2m1 0h1m1 0h1m2 0h2m1 0h3m1 0h1m1 0h1M4 31.5h1m5 0h1m1 0h1m1 0h1m1 0h3m4 0h1m1 0h4m3 0h5M4 32.5h1m1 0h3m1 0h1m2 0h4m4 0h1m2 0h1m2 0h6m1 0h1m1 0h1M4 33.5h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m3 0h3m6 0h1m1 0h4M4 34.5h1m1 0h3m1 0h1m1 0h1m4 0h1m4 0h2m1 0h1m1 0h2m1 0h2m1 0h1M4 35.5h1m5 0h1m8 0h3m1 0h1m2 0h1m1 0h1m1 0h3m3 0h1M4 36.5h7m1 0h6m1 0h1m1 0h2m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1" ></path>
 </svg>
 
-  </a></h3>
-<h2><code>jdsteinbach</code></h2>
-<h3><a rel="noreferrer noopener nofollow" target="_blank" href="https://bsky.app/profile/jdsteinbach.com">Bluesky</a> |
-  <a rel="noreferrer noopener nofollow" target="_blank" href="https://github.com/jdsteinbach">Github</a> | <a     href="https://jdsteinbach.com">Blog</a>
-</h3>
+    <figcaption>Scan for slides</figcaption>
+  </figure>
+  <div class="col">
+    <h4>James Steinbach</h4>
+    <p class="mb-2">Staff Software Engineer <br> <a rel="noreferrer noopener nofollow" target="_blank"
+        href="https://delinea.com">
+        <span class="sr-only">Delinea</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="logo" fill="none" viewBox="0 0 143 32">
+  <clipPath id="a">
+    <path d="m0 .633997h142.223v30.732h-142.223z" ></path>
+  </clipPath>
+  <g clip-path="url(#a)" fill="currentColor">
+    <path d="m30.6511 15.6334c-.0194-.8153-.1004-1.6147-.2429-2.3935h-8.453c.2839.7492.4515 1.5542.4869 2.3935z" ></path>
+    <path       d="m21.6348 12.5044h8.6206c-.1916-.8244-.4402-1.6272-.7595-2.3934h-9.7335c.7731.6625 1.4105 1.4755 1.8724 2.3934z" ></path>
+    <path       d="m18.743 9.37661h10.4097c-.3729-.77768-.8028-1.52229-1.2965-2.22014h-25.10466c-.25087.35463-.48919.73434-.70926 1.11064h12.71312c1.4618 0 2.8233.40366 3.9876 1.11064z" ></path>
+    <path       d="m11.0175 5.53839h8.331v.88258h7.9592c-.7651-.95784-1.6454-1.81648-2.6158-2.56793h-18.77491c-.44471.34437-.87346.70812-1.27827 1.09924h6.37878z" ></path>
+    <path       d="m19.3485 3.11983h4.3194c-2.4083-1.56676-5.2761-2.485833-8.3629-2.485833-2.5679 0-4.9831.638563-7.11086 1.751483h11.15436z" ></path>
+    <path d="m4.63871 9.85782v.73438h-3.702524c-.091223.244-.188148.4857-.270249.7343h10.351563v-1.46868z" ></path>
+    <path       d="m11.0175 13.4634h-6.37878v.3672h-4.5395041c-.0330685.2429-.0627161.488-.0855219.7343h4.625026v.3672h6.37878z" ></path>
+    <path d="m30.6374 16.3666c-.0194.8153-.1004 1.6147-.2429 2.3935h-8.453c.2839-.7492.4516-1.5542.4869-2.3935z" ></path>
+    <path       d="m21.6211 19.4956h8.6206c-.1916.8244-.4402 1.6272-.7595 2.3934h-9.7335c.7731-.6625 1.4106-1.4755 1.8724-2.3934z" ></path>
+    <path       d="m18.7293 22.6234h10.4097c-.3729.7777-.8027 1.5223-1.2965 2.2201h-25.10466c-.25086-.3546-.48918-.7343-.70926-1.1106h12.71312c1.4618 0 2.8234-.4037 3.9876-1.1107z" ></path>
+    <path       d="m11.0027 26.4616h8.3309v-.8826h7.9593c-.7652.9579-1.6455 1.8165-2.6158 2.568h-18.77495c-.44471-.3444-.87346-.7082-1.27826-1.0993h6.37881z" ></path>
+    <path       d="m19.3336 28.8802h4.3195c-2.4083 1.5667-5.2762 2.4858-8.3629 2.4858-2.568 0-4.9831-.6386-7.11089-1.7515h11.15429z" ></path>
+    <path d="m4.62502 22.1422v-.7344h-3.702527c-.091224-.244-.188149-.4857-.27025-.7343h10.351557v1.4687z" ></path>
+    <path       d="m4.62388 18.5366v-.3672h-4.5383581c-.0330685-.2429-.0627161-.488-.0855219-.7343h4.62502v-.3672h6.37878v1.4687z" ></path>
+    <path       d="m94.6876 12.7485c-1.0274-.9032-2.5737-1.3616-4.5954-1.3616-2.0218 0-3.5212.4277-4.6707 1.2692-1.0661.7811-1.7058 1.8005-1.9054 3.0309h3.1803c.1562-.5907.5017-1.0548 1.0274-1.3832.5599-.3489 1.317-.5257 2.2487-.5257.9316 0 1.7035.2247 2.1904.6683.4927.4492.7435 1.1117.7435 1.967v.9487l-4.243.6408c-1.8017.2714-3.2111.8085-4.1894 1.5941-.9681.7789-1.438 1.8051-1.438 3.1381 0 1.2361.4185 2.1905 1.2783 2.918s2.0411 1.0959 3.511 1.0959c1.2634 0 2.3421-.2749 3.2076-.8165.5975-.374 1.8735-1.4231 1.8735-1.4231v1.9419h3.5554v-9.7095c0-2.0115-.9646-3.2818-1.7742-3.9945zm-1.7812 8.5864c0 .8449-.3911 1.5656-1.1619 2.1448-.7515.5633-1.6991.8496-2.8166.8496-.7811 0-1.4071-.1699-1.8609-.5052-.4744-.3501-.7161-.8564-.7161-1.504 0-.7036.2531-1.2635.7537-1.6637.4767-.3809 1.1882-.6466 2.1164-.7914l3.6831-.561v2.0309z" ></path>
+    <path       d="m49.345 6.82122c-1.699-.84952-3.7139-1.27941-5.9922-1.27941h-6.5636v20.91639h6.5932c2.2601 0 4.2613-.4402 5.9478-1.3079 1.6865-.8678 3.0206-2.1027 3.9636-3.6729.9442-1.5713 1.4231-3.4346 1.4231-5.535s-.4732-3.9534-1.4083-5.5053c-.935-1.55081-2.2691-2.76636-3.9636-3.61474zm1.6409 9.17368c0 4.2749-3.4494 7.7391-7.7038 7.7391h-2.8211v-15.47943h2.8211c4.2555 0 7.7038 3.46533 7.7038 7.73913z" ></path>
+    <path       d="m68.048 12.3003c-1.0775-.6055-2.3649-.9134-3.8268-.9134-1.5405 0-2.9066.3273-4.0605.9716-1.1529.6431-2.064 1.5496-2.7094 2.6933-.6442 1.1449-.9704 2.4859-.9704 3.9876 0 1.5018.3262 2.8485.9704 4.0025.6443 1.1539 1.5611 2.0696 2.723 2.723 1.1643.6534 2.5452.9852 4.1039.9852 1.731 0 3.1894-.4094 4.3332-1.2167 1.1186-.7891 1.9305-1.8712 2.4162-3.2156h-3.3467c-.2794.5964-.7161 1.0468-1.2988 1.3375-.5907.2954-1.2885.4459-2.0753.4459-1.3581 0-2.422-.4356-3.1609-1.2942-.5269-.6112-.8712-1.4322-1.0206-2.4391l-.0376-.2532h11.2683c.0354-.2257.0616-.4413.0787-.6431.0194-.2315.0285-.4857.0285-.7537 0-1.4619-.3022-2.7595-.8985-3.8565-.5964-1.0947-1.4436-1.9567-2.5178-2.5611zm-7.8896 5.3708.0558-.2657c.1779-.8495.4915-1.5428.9328-2.0605.7401-.8678 1.7538-1.3079 3.0161-1.3079 1.1631 0 2.0833.3615 2.7355 1.073.4961.5416.8062 1.3205.9202 2.3159l.0286.2452z" ></path>
+    <path       d="m80.4065 5.54181c-1.7868 0-3.1437.43217-4.0332 1.28283-.8894.85066-1.3398 2.09928-1.3398 3.70936v1.1449h-2.6888v2.7663h2.6888v12.0118h3.5554v-12.0118h3.5657v-2.7663h-3.5657v-1.0571c0-.73434.1984-1.30448.5884-1.69674.3911-.39112.9921-.58839 1.7846-.58839.2748 0 .5234.01482.74.04447.1745.02394.3261.05815.4527.10148v-2.72415c-.2349-.06956-.4812-.12315-.7343-.15964-.2691-.03763-.6101-.05816-1.0138-.05816z" ></path>
+    <path       d="m121.122 7.746-3.556.96697v2.96023h-2.688v2.7663h2.688v7.3127c0 1.6101.451 2.8587 1.34 3.7094.89.8518 2.247 1.2828 4.033 1.2828.405 0 .746-.0194 1.014-.0582.253-.0365.5-.09.734-.1596v-2.7242c-.125.0434-.278.0776-.452.1015-.215.0297-.463.0445-.739.0445-.794 0-1.394-.1984-1.785-.5884-.391-.3923-.588-.9624-.588-1.6967v-7.2238h3.566v-2.7663h-3.566v-3.92834z" ></path>
+    <path       d="m141.238 15.0336c-.654-1.1346-1.58-2.0354-2.752-2.6797-1.173-.6454-2.57-.9715-4.149-.9715-1.58 0-2.949.3273-4.134.9715-1.184.6443-2.114 1.5463-2.766 2.6797-.654 1.1335-.985 2.4699-.985 3.9716 0 1.5018.331 2.8542.985 4.0173.652 1.1619 1.584 2.0833 2.767 2.7378 1.184.6534 2.575.9852 4.133.9852 1.557 0 2.945-.3318 4.12-.9852 1.171-.6522 2.102-1.5736 2.767-2.7378.663-1.1631.999-2.5144.999-4.0161 0-1.5018-.332-2.8382-.985-3.9717zm-3.278 6.5567c-.354.7389-.854 1.3182-1.484 1.7218-.631.4037-1.351.6089-2.139.6089s-1.532-.2052-2.153-.6089c-.621-.4025-1.12-.9818-1.484-1.7207-.364-.7366-.548-1.6169-.548-2.6147 0-1.4698.399-2.6454 1.187-3.4927.788-.8472 1.797-1.2771 2.998-1.2771 1.2 0 2.206.4299 2.984 1.2771.777.8473 1.172 2.0229 1.172 3.4916 0 .9966-.179 1.8769-.533 2.6147z" ></path>
+    <path       d="m107.098 18.719 6.898-7.0447h-4.437l-6.014 6.1428v-12.28099h-3.5551v20.91639h3.5551v-6.7996l6.434 6.7996h4.437z" ></path>
+  </g>
+</svg>
 
-</section>
+      </a></p>
+    <h4><code><span class="lighter">@</span>jdsteinbach<span class="lighter">.com</span></code></h4>
+    <p><a rel="noreferrer noopener nofollow" target="_blank" href="https://bsky.app/profile/jdsteinbach.com">Bluesky</a>
+      |
+      <a rel="noreferrer noopener nofollow" target="_blank" href="https://github.com/jdsteinbach">Github</a> | <a         href="https://jdsteinbach.com">Blog</a>
+    </p>
+  </div>
+</div>
 
-      
-      <section data-background-color="null" data-background-image="images/qrcode-transparent.png" data-background-repeat="no-repeat" data-background-size="contain">
-  
 </section>
 
       
@@ -630,15 +794,6 @@
 
     <footer class="colophon">
       <div class="colophon__logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50.18" height="56" viewBox="0 0 50.18 56" focusable="false"
-          aria-label="CascadiaJS 2020">
-          <rect width="50.18" height="56" fill="#17C37B" ></rect>
-          <path d="M25.09 13.88l4.98 4.98 1.25-1.24-6.23-6.23-6.23 6.23 1.25 1.24 4.98-4.98z" ></path>
-          <path d="M25.09 18.86l8.72 8.72 1.24-1.24-9.96-9.96-9.96 9.96 1.25 1.24 8.71-8.72z" ></path>
-          <path d="M25.09 23.85L37.54 36.3l1.25-1.25-13.7-13.69-13.7 13.69 1.25 1.25z" ></path>
-          <path d="M15.13 36.3l1.25 1.24 8.71-8.71 8.72 8.71 1.24-1.24-9.96-9.96-9.96 9.96z" ></path>
-          <path             d="M48.29 0H0v56h50.18V0zm0 54.1H26V34.67l4.11 4.12 1.25-1.25-6.23-6.22-6.23 6.22 1.25 1.25 4.05-4.09v19.4H1.9V1.9h46.39z" ></path>
-        </svg>
       </div>
 
       <a href="https://jdsteinbach.com/practical-color-css/" class="colophon__link">jds.li/css-color</a>
@@ -651,7 +806,7 @@
     const scale = .9
 
     const deck = new Reveal({
-      height: 1080 * scale,
+      height: 1080 * 1 * scale,
       width: 1920 * 0.95 * scale,
       hash: true,
       transition: 'fade'
