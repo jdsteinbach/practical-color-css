@@ -112,7 +112,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy({
     "./node_modules/reveal.js/dist/": "reveal",
   });
-  eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/assets");
 
   eleventyConfig.addWatchTarget("./src/_includes/theme/**/*.scss");
 

@@ -122,7 +122,7 @@ if (!Number.isFinite(opts.width) || !Number.isFinite(opts.height)) {
   process.exit(1);
 }
 
-const outPath = `src/images/${opts.outPath ?? slugFromUrl(urlObj)}`;
+const outPath = `src/assets/images/${opts.outPath ?? slugFromUrl(urlObj)}`;
 const engine = pickBrowser(opts.browser);
 
 const browser = await engine.launch();
@@ -143,6 +143,7 @@ try {
   // If the site uses JS to toggle dark mode based on prefers-color-scheme,
   // setting colorScheme in the context usually covers it. This is a belt+suspenders.
   if (opts.dark) {
+    console.log("Emulating dark mode...");
     await page.emulateMedia({ colorScheme: "dark" });
   }
 

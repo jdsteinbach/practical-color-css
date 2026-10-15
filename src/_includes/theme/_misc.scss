@@ -17,18 +17,47 @@
 
 .overlay {
   display: inline-block;
-  padding: 1em;
-  background: rgba($mainColor, .85);
-  color: #fff;
+  padding: 1em 1em 1.3em;
+  border-radius: 5vmin;
+  border: 1px solid rgb(from var(--r-background) r g b / .5);
+  background-color: rgb(from var(--r-main-color) r g b / .5);
+  backdrop-filter: blur(1vmin);
+  color: var(--r-background);
   font-weight: 500;
 
+  &.darker {
+    border: 1px solid rgb(from var(--r-background) r g b / .75);
+    background-color: rgb(from var(--r-main-color) r g b / .75);
+    backdrop-filter: blur(2vmin);
+  }
+
   a {
-    color: #fff;
+    color: var(--r-background);
     font-size: $heading3Size;
     font-weight: bold;
 
     &:hover {
       color: color.mix($linkColorHover, #fff);
     }
+  }
+}
+
+.grid {
+  margin-top: 1.618em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vmin;
+  align-items: top;
+
+  svg {
+    margin: 0 auto;
+    width: 40vmax;
+    height: auto;
+  }
+
+  figcaption {
+    margin-top: 0.618em;
+    font-style: italic;
+    font-size: 0.618em;
   }
 }

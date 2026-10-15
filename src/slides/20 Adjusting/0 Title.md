@@ -1,1 +1,5 @@
-## Color Manipulation
+---
+data-background-color: "#222"
+---
+
+## Simplify Variations

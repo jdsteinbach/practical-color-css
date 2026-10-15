@@ -8,12 +8,13 @@
   bottom: 0;
   left: 0;
   z-index: 1;
-  transform: scale(0);
+  opacity: 0;
   transition-duration: 1s !important;
   transition-timing-function: cubic-bezier(1,.5,.75,1.25) !important;
+  background-color: rgba($mainColor, .85);
 
   &.visible {
-    transform: scale(1);
+    opacity: 1;
   }
 
   svg {

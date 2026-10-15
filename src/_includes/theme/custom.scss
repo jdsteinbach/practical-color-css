@@ -2,29 +2,31 @@
 @use "sass:list";
 @use "sass:math";
 
-$backgroundColor: #17C37B;
+$backgroundColor: color.mix(#fff, #6c2e7d, 95%);
 
-$mainColor: #112378;
-$headingColor: $mainColor;
+$mainColor: #222;
+$headingColor: #6c2e7d;
 
-$preColor: #FFD007;
+$preColor: #f0a86e;
+$preColor2: color.scale(#7db8ee, $lightness: 20%);
+$preColor3: color.scale(#d7a6e6, $lightness: 20%);
 
-$mainFontSize: 50px;
-$mainFont: 'canada-type-gibson', Helvetica, sans-serif;
-$headingFont: 'mono45-headline', Helvetica, sans-serif;
+$mainFontSize: 52px;
+$mainFont: 'IBMPlexSans', Helvetica, sans-serif;
+$headingFont: 'IBMPlexSans', Helvetica, sans-serif;
 $headingFontWeight: 700;
-$heading1Size: 3.6em;
-$heading2Size: 2.4em;
-$heading3Size: 2em;
-$heading4Size: 1.6em;
+$heading4Size: 1.272em;
+$heading3Size: 1.618em;
+$heading2Size: 2.058em;
+$heading1Size: 2.618em;
 
-$linkColor: #112378;
-$linkColorHover: #0033FF;
+$linkColor: #025b9f;
+$linkColorHover: color.scale($linkColor, $lightness: -10%);
 $linkColorDark: color.scale($linkColor, $lightness: -15%);
 
 $selectionBackgroundColor: color.adjust($linkColor, $lightness: 25%);
 
-$codeFont: 'ibm-plex-mono', Operator Mono, monospace;
+$codeFont: 'IBMPlexMono', Operator Mono, monospace;
 
 @use "template/settings" with (
   $background-color: $backgroundColor,
@@ -51,46 +53,76 @@ $codeFont: 'ibm-plex-mono', Operator Mono, monospace;
   $code-font: $codeFont,
 );
 
+@font-face {
+  font-family: 'IBMPlexSans';
+  src: url('/assets/fonts/IBMPlexSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IBMPlexSans';
+  src: url('/assets/fonts/IBMPlexSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('/assets/fonts/IBMPlexMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('/assets/fonts/IBMPlexMono-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('/assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('/assets/fonts/IBMPlexMono-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic  ;
+}
+
+
 // Default mixins and settings -----------------
 @import "template/mixins";
 // ---------------------------------------------
 
 
-// Solarized colors
-$base03:    #002b36;
-$base02:    #073642;
-$base01:    #586e75;
-$base00:    #657b83;
-$base0:     #839496;
-$base1:     #93a1a1;
-$base2:     #eee8d5;
-$base3:     #fdf6e3;
-$yellow:    #b58900;
-$orange:    #cb4b16;
-$red:       #dc322f;
-$magenta:   #d33682;
-$violet:    #6c71c4;
-$blue:      #268bd2;
-$cyan:      #2aa198;
-$green:     #859900;
-
 body {
   font-feature-settings: "liga";
 }
 
-section.has-light-background {
-	&, h1, h2, h3, h4, h5, h6 {
-		color: #222;
-	}
-}
-
 .reveal {
   section {
+    h1 {
+      font-weight: 900;
+      font-stretch: 75%;
+    }
+
+    .lighter {
+      opacity: .5;
+      font-weight: 100;
+    }
+
     h2, h3, h4, h5, h6 {
       margin-right: auto;
       margin-left: auto;
-      max-width: 60rem;
-      font-weight: 800;
+      max-width: 64rem;
+      font-weight: 900;
+      font-stretch: 75%;
       text-wrap: balance;
 
       + p,
@@ -100,15 +132,16 @@ section.has-light-background {
     }
 
     h2, h4, h6 {
-      font-family: $codeFont;
+      font-weight: 700;
+      font-stretch: 100%;
       text-transform: none;
     }
 
     h1 + h3,
     h2 + h3 {
-      font-family: $mainFont;
       text-transform: none;
       font-weight: 400;
+      font-stretch: 100%;
     }
 
     h3:first-child:last-child {
@@ -119,7 +152,6 @@ section.has-light-background {
       margin-bottom: .125em;
       padding-bottom: .125em;
       display: block;
-      font-family: $headingFont;
       font-size: 1.6em;
       border-bottom: .15em solid currentColor;
     }
@@ -150,8 +182,8 @@ section.has-light-background {
     pre {
       display: inline-block;
       width: auto;
-      padding: 1ch;
-      border-radius: .25ch;
+      padding: calc(5vmin / 1.618);
+      border-radius: 5vmin;
       box-sizing: border-box;
       background-color: $mainColor;
       color: $preColor;
@@ -199,6 +231,10 @@ section.has-light-background {
       &:first-child:last-child {
         font-size: $heading3Size;
       }
+
+      &:not(:last-child) {
+        margin-bottom: 1em;
+      }
     }
 
     .p--large {
@@ -244,6 +280,12 @@ section.has-light-background {
     .link__icon {
       width: 0.8em;
       height: 0.8em;
+    }
+
+    &.has-dark-background {
+      h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote {
+        color: $backgroundColor;
+      }
     }
   }
 

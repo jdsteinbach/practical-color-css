@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="reveal/reset.css">
   <link rel="stylesheet" href="reveal/reveal.css">
   <link rel="stylesheet" href="css/theme/custom.css">
-
-  <link rel="stylesheet" href="https://use.typekit.net/pzu4dhu.css">
 </head>
 
 <body class="">
@@ -25,16 +23,6 @@
 
     <footer class="colophon">
       <div class="colophon__logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50.18" height="56" viewBox="0 0 50.18 56" focusable="false"
-          aria-label="CascadiaJS 2020">
-          <rect width="50.18" height="56" fill="#17C37B" />
-          <path d="M25.09 13.88l4.98 4.98 1.25-1.24-6.23-6.23-6.23 6.23 1.25 1.24 4.98-4.98z" />
-          <path d="M25.09 18.86l8.72 8.72 1.24-1.24-9.96-9.96-9.96 9.96 1.25 1.24 8.71-8.72z" />
-          <path d="M25.09 23.85L37.54 36.3l1.25-1.25-13.7-13.69-13.7 13.69 1.25 1.25z" />
-          <path d="M15.13 36.3l1.25 1.24 8.71-8.71 8.72 8.71 1.24-1.24-9.96-9.96-9.96 9.96z" />
-          <path
-            d="M48.29 0H0v56h50.18V0zm0 54.1H26V34.67l4.11 4.12 1.25-1.25-6.23-6.22-6.23 6.22 1.25 1.25 4.05-4.09v19.4H1.9V1.9h46.39z" />
-        </svg>
       </div>
 
       <a href="{{ slides.public_url }}" class="colophon__link">{{ slides.short_url }}</a>
@@ -47,7 +35,7 @@
     const scale = .9
 
     const deck = new Reveal({
-      height: 1080 * scale,
+      height: 1080 * 1 * scale,
       width: 1920 * 0.95 * scale,
       hash: true,
       transition: 'fade'

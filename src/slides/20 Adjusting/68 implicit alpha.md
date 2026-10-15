@@ -1,4 +1,4 @@
-Existing color functions implicitly handle&nbsp;alpha.
+Existing color functions implicitly handle `alpha`.
 
 ```css
 rgb(25, 25, 25, 0.8)

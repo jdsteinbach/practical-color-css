@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "sass:list";
 
 $selector-groups: (
@@ -53,16 +54,16 @@ $selector-groups: (
 );
 
 $selector-colors: (
-  rgba($backgroundColor, .6),
-  rgba(#fff, .6),
-  rgba(#fff, .8),
-  rgba($preColor, .8),
-  #fff,
-  $preColor,
-  rgba(#fff, .6),
   $backgroundColor,
-  rgba(#fff, .8),
-  rgba($backgroundColor, .8),
+  color.mix($preColor2, $backgroundColor, 60%),
+  color.mix($preColor3, $backgroundColor, 80%),
+  color.mix($preColor, $backgroundColor, 60%),
+  color.mix($preColor2, $backgroundColor, 40%),
+  color.mix($preColor, $backgroundColor, 40%),
+  color.mix($preColor3, $backgroundColor, 60%),
+  $backgroundColor,
+  color.mix($preColor2, $backgroundColor, 80%),
+  $backgroundColor,
 );
 
 @each $category-values in $selector-groups {
@@ -88,7 +89,7 @@ $selector-colors: (
 
 .break-down {
   font-weight: normal;
-  color: rgba($preColor, .6);
+  color: rgba($preColor, .85);
 
   &.current-fragment {
     font-weight: bold;
