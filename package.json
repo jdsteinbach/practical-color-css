@@ -37,7 +37,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "autoprefixer": "^10.5.0",
     "cssnano": "^8.0.1",
-    "markdown-it": "^14.1.1",
+    "markdown-it": "^14.2.0",
     "markdown-it-highlightjs": "^4.3.0",
     "node-html-parser": "^7.1.0",
     "playwright": "^1.59.1",
