@@ -1,9 +1,10 @@
 #### Windows Contrast Themes
 
-Activates 2 MQ values:
-* `prefers-contrast: more`
-* `forced-colors: active`
+```css
+@media (prefers-contrast: more) and (forced-colors: active) {
+}
+```
 
-"Forced colors" (values from the theme) override all CSS.
+Theme "forced colors" override all CSS.
 
-Using fancy new color functions won't break Contrast Themes.
+Color functions won't break Contrast Themes.

@@ -12,8 +12,8 @@ $preColor2: color.scale(#7db8ee, $lightness: 20%);
 $preColor3: color.scale(#d7a6e6, $lightness: 20%);
 
 $mainFontSize: 52px;
-$mainFont: 'IBMPlexSans', Helvetica, sans-serif;
-$headingFont: 'IBMPlexSans', Helvetica, sans-serif;
+$mainFont: 'BodySans', Helvetica, sans-serif;
+$headingFont: 'BodySans', Helvetica, sans-serif;
 $headingFontWeight: 700;
 $heading4Size: 1.272em;
 $heading3Size: 1.618em;
@@ -26,7 +26,7 @@ $linkColorDark: color.scale($linkColor, $lightness: -15%);
 
 $selectionBackgroundColor: color.adjust($linkColor, $lightness: 25%);
 
-$codeFont: 'IBMPlexMono', Operator Mono, monospace;
+$codeFont: 'MonoFont', Operator Mono, monospace;
 
 @use "template/settings" with (
   $background-color: $backgroundColor,
@@ -54,45 +54,24 @@ $codeFont: 'IBMPlexMono', Operator Mono, monospace;
 );
 
 @font-face {
-  font-family: 'IBMPlexSans';
-  src: url('../../assets/fonts/IBMPlexSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-family: 'BodySans';
+  src: url('../../assets/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBMPlexSans';
-  src: url('../../assets/fonts/IBMPlexSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-family: 'MonoFont';
+  src: url('../../assets/fonts/GeistMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonoFont';
+  src: url('../../assets/fonts/GeistMono-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: italic;
-}
-
-@font-face {
-  font-family: 'IBMPlexMono';
-  src: url('../../assets/fonts/IBMPlexMono-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'IBMPlexMono';
-  src: url('../../assets/fonts/IBMPlexMono-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'IBMPlexMono';
-  src: url('../../assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'IBMPlexMono';
-  src: url('../../assets/fonts/IBMPlexMono-SemiBoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic  ;
 }
 
 
@@ -110,6 +89,7 @@ body {
     h1 {
       font-weight: 900;
       font-stretch: 75%;
+      letter-spacing: .05em;
     }
 
     .lighter {
@@ -123,6 +103,7 @@ body {
       max-width: 64rem;
       font-weight: 900;
       font-stretch: 75%;
+      letter-spacing: .05em;
       text-wrap: balance;
 
       + p,
@@ -132,7 +113,7 @@ body {
     }
 
     h2, h4, h6 {
-      font-weight: 700;
+      font-weight: 900;
       font-stretch: 100%;
       text-transform: none;
     }
@@ -239,6 +220,10 @@ body {
 
     .p--large {
       font-size: $heading4Size;
+    }
+
+    :is(pre, ul, ol) + p {
+      margin-top: .618em;
     }
 
     blockquote {
