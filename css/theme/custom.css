@@ -2,12 +2,12 @@
 :root {
   --r-background: rgb(247.65, 244.55, 248.5);
   --r-background-color: rgb(247.65, 244.55, 248.5);
-  --r-main-font: IBMPlexSans, Helvetica, sans-serif;
+  --r-main-font: BodySans, Helvetica, sans-serif;
   --r-main-font-size: 52px;
   --r-main-color: #222;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
-  --r-heading-font: IBMPlexSans, Helvetica, sans-serif;
+  --r-heading-font: BodySans, Helvetica, sans-serif;
   --r-heading-color: #6c2e7d;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
@@ -19,7 +19,7 @@
   --r-heading2-size: 2.058em;
   --r-heading3-size: 1.618em;
   --r-heading4-size: 1.272em;
-  --r-code-font: IBMPlexMono, Operator Mono, monospace;
+  --r-code-font: MonoFont, Operator Mono, monospace;
   --r-link-color: #025b9f;
   --r-link-color-dark: rgb(1.7, 77.35, 135.15);
   --r-link-color-hover: rgb(1.8, 81.9, 143.1);
@@ -30,39 +30,21 @@
 }
 
 @font-face {
-  font-family: "IBMPlexSans";
-  src: url("../../assets/fonts/IBMPlexSans-VariableFont_wdth,wght.ttf") format("truetype");
+  font-family: "BodySans";
+  src: url("../../assets/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
 }
 @font-face {
-  font-family: "IBMPlexSans";
-  src: url("../../assets/fonts/IBMPlexSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+  font-family: "MonoFont";
+  src: url("../../assets/fonts/GeistMono-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
-  font-style: italic;
-}
-@font-face {
-  font-family: "IBMPlexMono";
-  src: url("../../assets/fonts/IBMPlexMono-Regular.ttf") format("truetype");
-  font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: "IBMPlexMono";
-  src: url("../../assets/fonts/IBMPlexMono-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-}
-@font-face {
-  font-family: "IBMPlexMono";
-  src: url("../../assets/fonts/IBMPlexMono-SemiBold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "IBMPlexMono";
-  src: url("../../assets/fonts/IBMPlexMono-SemiBoldItalic.ttf") format("truetype");
-  font-weight: 700;
+  font-family: "MonoFont";
+  src: url("../../assets/fonts/GeistMono-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
   font-style: italic;
 }
 body {
@@ -72,6 +54,7 @@ body {
 .reveal section h1 {
   font-weight: 900;
   font-stretch: 75%;
+  letter-spacing: 0.05em;
 }
 .reveal section .lighter {
   opacity: 0.5;
@@ -83,6 +66,7 @@ body {
   max-width: 64rem;
   font-weight: 900;
   font-stretch: 75%;
+  letter-spacing: 0.05em;
   text-wrap: balance;
 }
 .reveal section h2 + p,
@@ -94,7 +78,7 @@ body {
   margin-top: 1em;
 }
 .reveal section h2, .reveal section h4, .reveal section h6 {
-  font-weight: 700;
+  font-weight: 900;
   font-stretch: 100%;
   text-transform: none;
 }
@@ -178,6 +162,9 @@ body {
 }
 .reveal section .p--large {
   font-size: 1.272em;
+}
+.reveal section :is(pre, ul, ol) + p {
+  margin-top: 0.618em;
 }
 .reveal section blockquote {
   padding: 1.618em;
@@ -322,7 +309,7 @@ body {
 }
 .reveal .colophon__link {
   padding: 0.5em 1em 0.7em;
-  font-family: "IBMPlexMono", Operator Mono, monospace;
+  font-family: "MonoFont", Operator Mono, monospace;
   font-style: italic;
   font-size: 3.7082818294vmin;
   border-radius: 5vmin;

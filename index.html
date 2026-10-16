@@ -41,9 +41,9 @@
       
       <section>
   <h3>Roadmap</h3>
-<h6>1. Simplify Theming</h6>
-<h6>2. Simplify Variations</h6>
-<h6>3. Simplify Contrast</h6>
+<h4>1. Simplify Theming</h4>
+<h4>2. Simplify Variations</h4>
+<h4>3. Simplify Contrast</h4>
 
 </section>
 
@@ -565,13 +565,10 @@
       
       <section>
   <h4>Windows Contrast Themes</h4>
-<p>Activates 2 MQ values:</p>
-<ul>
-<li><code>prefers-contrast: more</code></li>
-<li><code>forced-colors: active</code></li>
-</ul>
-<p>“Forced colors” (values from the theme) override all CSS.</p>
-<p>Using fancy new color functions won’t break Contrast Themes.</p>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-contrast</span><span class="token punctuation">:</span> more<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">forced-colors</span><span class="token punctuation">:</span> active<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Theme “forced colors” override all CSS.</p>
+<p>Color functions won’t break Contrast Themes.</p>
 
 </section>
 
