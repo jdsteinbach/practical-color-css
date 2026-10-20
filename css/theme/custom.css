@@ -305,13 +305,12 @@ body {
 .reveal .colophon__logo svg {
   height: 8vh;
   width: auto;
-  fill: #222;
 }
 .reveal .colophon__link {
-  padding: 0.5em 1em 0.7em;
+  padding: 0.5em 1em 0.6em;
   font-family: "MonoFont", Operator Mono, monospace;
   font-style: italic;
-  font-size: 3.7082818294vmin;
+  font-size: 3vmin;
   border-radius: 5vmin;
   border: 1px solid rgb(from var(--r-background) r g b/0.75);
   background-color: rgb(from var(--r-background) r g b/0.67);
@@ -399,7 +398,7 @@ body {
 }
 .reveal .grid svg {
   margin: 0 auto;
-  width: 40vmax;
+  width: 40vmin;
   height: auto;
 }
 .reveal .grid figcaption {
