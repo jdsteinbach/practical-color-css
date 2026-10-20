@@ -21,15 +21,14 @@
   svg {
     height: 8vh;
     width: auto;
-    fill: $mainColor;
   }
 }
 
 .colophon__link {
-  padding: .5em 1em .7em;
+  padding: .5em 1em .6em;
   font-family: $codeFont;
   font-style: italic;
-  font-size: calc(6vmin / 1.618);
+  font-size: 3vmin;
   border-radius: 5vmin;
   border: 1px solid rgb(from var(--r-background) r g b / .75);
   background-color: rgb(from var(--r-background) r g b / .67);

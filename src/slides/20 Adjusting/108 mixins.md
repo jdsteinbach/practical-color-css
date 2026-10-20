@@ -1,5 +1,5 @@
 ```scss
-@mixin button($color: $blue) {
+@mixin button($color: #6a5acd) {
   color: color.scale($color, $lightness: -15%);
   border-color: $color;
   background: color.change($color, $lightness: 90%);

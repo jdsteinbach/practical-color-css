@@ -1,6 +1,6 @@
 ```css
 :root {
-  --start: dodgerblue;
+  --start: slateblue;
 
   --primary: hsl(
     from var(--start) h s l
