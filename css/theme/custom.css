@@ -52,6 +52,7 @@ body {
 }
 
 .reveal section h1 {
+  --title-max-width: 72rem;
   font-weight: 900;
   font-stretch: 75%;
   letter-spacing: 0.05em;
@@ -60,16 +61,17 @@ body {
   opacity: 0.5;
   font-weight: 100;
 }
-.reveal section h2, .reveal section h3, .reveal section h4, .reveal section h5, .reveal section h6 {
+.reveal section h1, .reveal section h2, .reveal section h3, .reveal section h4, .reveal section h5, .reveal section h6 {
   margin-right: auto;
   margin-left: auto;
-  max-width: 64rem;
+  max-width: var(--title-max-width, 64rem);
   font-weight: 900;
   font-stretch: 75%;
   letter-spacing: 0.05em;
   text-wrap: balance;
 }
-.reveal section h2 + p,
+.reveal section h1 + p,
+.reveal section h1 + ul, .reveal section h2 + p,
 .reveal section h2 + ul, .reveal section h3 + p,
 .reveal section h3 + ul, .reveal section h4 + p,
 .reveal section h4 + ul, .reveal section h5 + p,
@@ -85,7 +87,7 @@ body {
 .reveal section h1 + h3,
 .reveal section h2 + h3 {
   text-transform: none;
-  font-weight: 400;
+  font-weight: 600;
   font-stretch: 100%;
 }
 .reveal section h3:first-child:last-child {
