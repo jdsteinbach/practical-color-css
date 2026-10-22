@@ -10,10 +10,7 @@
 ```
 
 ```html
-<!-- media query -->
 <html class="scheme-light-dark">
-
-<!-- override -->
 <html class="scheme-light">
 <html class="scheme-dark">
 ```
