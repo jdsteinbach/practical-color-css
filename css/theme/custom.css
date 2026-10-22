@@ -202,6 +202,9 @@ body {
 .reveal section.has-dark-background h1, .reveal section.has-dark-background h2, .reveal section.has-dark-background h3, .reveal section.has-dark-background h4, .reveal section.has-dark-background h5, .reveal section.has-dark-background h6, .reveal section.has-dark-background p, .reveal section.has-dark-background ul, .reveal section.has-dark-background ol, .reveal section.has-dark-background blockquote {
   color: rgb(247.65, 244.55, 248.5);
 }
+.reveal.has-dark-background, .reveal:has(.present pre:first-child:only-of-type) {
+  --colophon-logo-color: #fff;
+}
 .reveal .logo {
   margin-bottom: 0;
   max-height: 1em;
@@ -297,14 +300,36 @@ body {
 .reveal .colophon::after {
   content: "";
   display: block;
-  width: 15vw;
+  width: 17vw;
+}
+.reveal .colophon::before {
+  content: "";
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 0;
+  height: 16vh;
+  -webkit-mask: linear-gradient(to bottom, transparent, black 67%);
+          mask: linear-gradient(to bottom, transparent, black 67%);
+  backdrop-filter: blur(2vmin);
 }
 .reveal .colophon__logo {
-  width: 15vw;
+  width: 17vw;
+  position: relative;
+}
+.reveal .colophon__logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 }
 .reveal .colophon__logo svg {
   height: 8vh;
   width: auto;
+  max-width: 18vw;
+}
+.reveal .colophon__logo svg * {
+  fill: var(--colophon-logo-color, #025b9f);
+  transition: fill 0.3s;
 }
 .reveal .colophon__link {
   padding: 0.5em 1em 0.6em;
