@@ -412,6 +412,7 @@ body {
   color: var(--r-background);
   font-size: 1.618em;
   font-weight: bold;
+  font-family: "MonoFont", Operator Mono, monospace;
 }
 .reveal .overlay a:hover {
   color: rgb(128.4, 168.45, 199.05);
