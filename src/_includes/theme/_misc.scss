@@ -35,6 +35,7 @@
     color: var(--r-background);
     font-size: $heading3Size;
     font-weight: bold;
+    font-family: $codeFont;
 
     &:hover {
       color: color.mix($linkColorHover, #fff);
