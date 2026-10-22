@@ -24,6 +24,7 @@ $linkColor: #025b9f;
 $linkColorHover: color.scale($linkColor, $lightness: -10%);
 $linkColorDark: color.scale($linkColor, $lightness: -15%);
 
+$colophonLogoColor: $linkColor;
 $selectionBackgroundColor: color.adjust($linkColor, $lightness: 25%);
 
 $codeFont: 'MonoFont', Operator Mono, monospace;
@@ -272,6 +273,11 @@ body {
         color: $backgroundColor;
       }
     }
+  }
+
+  &.has-dark-background,
+  &:has(.present pre:first-child:only-of-type) {
+    --colophon-logo-color: #fff;
   }
 
   @import "logo";
