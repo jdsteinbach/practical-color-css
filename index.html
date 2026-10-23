@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -17,30 +17,30 @@
   <div class="reveal">
     <div class="slides">
       
-      <section data-background-color="#222">
+      <section data-background-color="#222" style="--data-background-color: #222">
   <h1>This Is Why We Can’t Have Nice Themes</h1>
-<h3>Modern CSS for Accessible Colors</h3>
+<p>Modern CSS for Accessible Colors</p>
 
 </section>
 
       
-      <section>
+      <section  >
   <h2>None of us want to make inaccessible color schemes.</h2>
 
 </section>
 
       
-      <section>
-  <h4>Reduce Complexity</h4>
+      <section  >
+  <h3>Reduce Complexity</h3>
 <p>⬇</p>
-<h4>Reduce Code</h4>
+<h3>Reduce Code</h3>
 <p>⬇</p>
-<h4>Reduce Errors</h4>
+<h3>Reduce Errors</h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <h3>Roadmap</h3>
 <h4>1. Simplify Theming</h4>
 <h4>2. Simplify Variations</h4>
@@ -49,19 +49,19 @@
 </section>
 
       
-      <section data-background-color="#222">
+      <section data-background-color="#222" style="--data-background-color: #222">
   <h2>Simplify Theming</h2>
 
 </section>
 
       
-      <section>
+      <section  >
   <h3>Wait…<br>don’t we already have theming?</h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--surface-primary</span><span class="token punctuation">:</span> #eee<span class="token punctuation">;</span>
   <span class="token property">--surface-secondary</span><span class="token punctuation">:</span> #ccc<span class="token punctuation">;</span>
@@ -73,7 +73,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
   <span class="token comment">/* vars: light values (>1K LOC) */</span>
@@ -91,7 +91,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
   <span class="token comment">/* vars: light values (>1K LOC) */</span>
@@ -109,7 +109,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root,
 [data-theme="light"]</span> <span class="token punctuation">{</span>
   <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
@@ -128,7 +128,7 @@
   <span class="token comment">/* vars: dark values (>1K LOC repeated!) */</span>
 <span class="token punctuation">}</span></code></pre>
 <div class="fragment noper">
-  <svg role="presentation" aria-label="Nope" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" focusable="false">
+  <svg aria-label="Nope" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" focusable="false">
     <circle stroke="red" stroke-width="2" fill="none" cy="8" cx="8" r="7"></circle>
     <path stroke="red" stroke-width="2" fill="none" d="M13 3L3 13"></path>
   </svg>
@@ -137,13 +137,13 @@
 </section>
 
       
-      <section>
+      <section  >
   <h3><code>light-dark()</code></h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <p>The new <code>light-dark()</code> function lets you define both values in one line:</p>
 <pre class="language-css"><code class="language-css"><span class="token function">light-dark</span><span class="token punctuation">(</span>&lt;lightValue><span class="token punctuation">,</span> &lt;darkValue><span class="token punctuation">)</span></code></pre>
 <br>
@@ -163,7 +163,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
 
@@ -177,7 +177,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
 
@@ -197,7 +197,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
 
@@ -216,14 +216,14 @@
 </section>
 
       
-      <section data-background-color="#222" data-background-image="assets/images/ciu-light-dark.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+      <section data-background-color="#222" data-background-image="assets/images/ciu-light-dark.jpg" data-background-repeat="no-repeat" data-background-size="contain" style="--data-background-color: #222; --data-background-image: url(/assets/images/ciu-light-dark.jpg); --data-background-repeat: no-repeat; --data-background-size: contain">
   <p class="sr-only"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 91.28% of global usage.</p>
 <h3 class="overlay"><a href="https://caniuse.com/wf-light-dark" rel="noreferrer noopener nofollow" target="_blank">91%</a></h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span><span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>black<span class="token punctuation">,</span> white<span class="token punctuation">)</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
   <span class="token selector">:root</span> <span class="token punctuation">{</span>
     <span class="token property">color-scheme</span><span class="token punctuation">:</span> light dark<span class="token punctuation">;</span>
@@ -238,7 +238,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">"tailwindcss"</span><span class="token punctuation">;</span></span> <span class="token comment">/* v4 */</span>
 
 <span class="token atrule"><span class="token rule">@theme</span></span> <span class="token punctuation">{</span>
@@ -254,19 +254,19 @@
 </section>
 
       
-      <section data-background-color="#222">
+      <section data-background-color="#222" style="--data-background-color: #222">
   <h2>Simplify Variations</h2>
 
 </section>
 
       
-      <section>
+      <section  >
   <h3>Real-time Color Manipulation</h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
 
 <span class="token selector">.button.red </span><span class="token punctuation">{</span>
@@ -280,7 +280,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--red</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -293,13 +293,13 @@
   <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">lighten</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span><span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <div class="fragment noper">
-  <span role="presentation" aria-label="sad trombone" style="font-size: 33vmin">😢🪊</span>
+  <span aria-label="sad trombone" style="font-size: 33vmin">😢🪊</span>
 </div>
 
 </section>
 
       
-      <section>
+      <section  >
   <h3>CSS Relative Colors</h3>
 <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--red</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
@@ -316,7 +316,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <p>Existing color functions don’t need commas.</p>
 <pre class="language-css"><code class="language-css"><span class="token function">rgb</span><span class="token punctuation">(</span>25<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 25<span class="token punctuation">)</span>
 <span class="token function">rgb</span><span class="token punctuation">(</span>25 25 25<span class="token punctuation">)</span></code></pre>
@@ -327,7 +327,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <p>Existing color functions implicitly handle <code>alpha</code>.</p>
 <pre class="language-css"><code class="language-css"><span class="token function">rgb</span><span class="token punctuation">(</span>25<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span>
 <span class="token function">rgb</span><span class="token punctuation">(</span>25 25 25 / 0.8<span class="token punctuation">)</span></code></pre>
@@ -338,7 +338,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h4>Breaking <code>from</code> down...</h4>
 
 <pre class="break-down__anchor"><code><span class="fragment custom break-down" data-break-down="1">rgb(
@@ -357,7 +357,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <p><strong>Reminder:</strong> new syntax, identical output</p>
 <pre class="language-css"><code class="language-css"><span class="token function">rgb</span><span class="token punctuation">(</span>
   from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> alpha
@@ -370,7 +370,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h4>Tints</h4>
 <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--surface-primary--coolest</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>
@@ -384,7 +384,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h4>Adjust Alpha</h4>
 <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--surface-primary--shadow</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
@@ -398,7 +398,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h4>Normalized Lightness</h4>
 <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--surface-primary--dark</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
@@ -412,7 +412,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--red</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
   <span class="token property">--red--100</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>from <span class="token function">var</span><span class="token punctuation">(</span>--red<span class="token punctuation">)</span> h s 90<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -429,7 +429,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--start</span><span class="token punctuation">:</span> slateblue<span class="token punctuation">;</span>
 
@@ -447,7 +447,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-scss"><code class="language-scss"><span class="token keyword">@mixin</span> <span class="token function">button</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$color</span></span><span class="token punctuation">:</span> #6a5acd<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> color.<span class="token function">scale</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> -15%<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">border-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>
@@ -465,7 +465,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-scss"><code class="language-scss"><span class="token selector">.button.red </span><span class="token punctuation">{</span>
   <span class="token keyword">@include</span> <span class="token function">button</span><span class="token punctuation">(</span><span class="token variable">$red</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -481,7 +481,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">.button</span> <span class="token punctuation">{</span>
   <span class="token property">--button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--blue<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -500,7 +500,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">.button.green</span> <span class="token punctuation">{</span>
   <span class="token property">--button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--green<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -516,14 +516,14 @@
 </section>
 
       
-      <section data-background-color="#222" data-background-image="assets/images/ciu-relative-colors.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+      <section data-background-color="#222" data-background-image="assets/images/ciu-relative-colors.jpg" data-background-repeat="no-repeat" data-background-size="contain" style="--data-background-color: #222; --data-background-image: url(/assets/images/ciu-relative-colors.jpg); --data-background-repeat: no-repeat; --data-background-size: contain">
   <p class="sr-only"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 93.45% of global usage.</p>
 <h3 class="overlay"><a href="https://caniuse.com/css-relative-colors" rel="noreferrer noopener nofollow" target="_blank">93%</a></h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span><span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>from red<span class="token punctuation">,</span> r g b<span class="token punctuation">)</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
   <span class="token selector">.button</span> <span class="token punctuation">{</span>
     <span class="token property">--button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--blue<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -537,7 +537,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h3>CSS <code>color-mix()</code></h3>
 <pre class="language-css"><code class="language-css"><span class="token selector">.button</span> <span class="token punctuation">{</span>
   <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">color-mix</span><span class="token punctuation">(</span>
@@ -550,7 +550,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h4>Breaking it down...</h4>
 
 <pre class="break-down__anchor"><code><span class="fragment custom break-down" data-break-down="1">color-mix(
@@ -571,14 +571,14 @@
 </section>
 
       
-      <section data-background-color="#222" data-background-image="assets/images/ciu-color-mix.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+      <section data-background-color="#222" data-background-image="assets/images/ciu-color-mix.jpg" data-background-repeat="no-repeat" data-background-size="contain" style="--data-background-color: #222; --data-background-image: url(/assets/images/ciu-color-mix.jpg); --data-background-repeat: no-repeat; --data-background-size: contain">
   <p class="sr-only"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 94.79% of global usage.</p>
 <h3 class="overlay"><a href="https://caniuse.com/wf-color-mix" rel="noreferrer noopener nofollow" target="_blank">94%</a></h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span><span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">color-mix</span><span class="token punctuation">(</span>in oklch<span class="token punctuation">,</span> red<span class="token punctuation">,</span> blue<span class="token punctuation">)</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
   <span class="token selector">.button</span> <span class="token punctuation">{</span>
     <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">color-mix</span><span class="token punctuation">(</span>
@@ -597,19 +597,19 @@
 </section>
 
       
-      <section data-background-color="#222">
+      <section data-background-color="#222" style="--data-background-color: #222">
   <h2>Simplify Contrast</h2>
 
 </section>
 
       
-      <section>
+      <section  >
   <h3>User Color Overrides</h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <h4>Windows Contrast Themes</h4>
 <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-contrast</span><span class="token punctuation">:</span> more<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">forced-colors</span><span class="token punctuation">:</span> active<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span></code></pre>
@@ -619,7 +619,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h4>macOS <strong>Increase Contrast</strong></h4>
 <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-contrast</span><span class="token punctuation">:</span> more<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">forced-colors</span><span class="token punctuation">:</span> none<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span></code></pre>
@@ -627,7 +627,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--input-border</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--base-border<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -645,7 +645,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
   <span class="token property">--input-border</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--base-border<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -663,7 +663,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h3>CSS <code>contrast-color()</code></h3>
 <pre class="language-css"><code class="language-css"><span class="token selector">button</span> <span class="token punctuation">{</span>
   <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -675,21 +675,21 @@
 </section>
 
       
-      <section data-background-color="#222" data-background-image="assets/images/birger-strahl-Suaoofu6DXM-unsplash-bw.jpg" data-background-repeat="no-repeat" data-background-size="cover">
+      <section data-background-color="#222" data-background-image="assets/images/birger-strahl-Suaoofu6DXM-unsplash-bw.jpg" data-background-repeat="no-repeat" data-background-size="cover" style="--data-background-color: #222; --data-background-image: url(/assets/images/birger-strahl-Suaoofu6DXM-unsplash-bw.jpg); --data-background-repeat: no-repeat; --data-background-size: cover">
   <p class="sr-only">Photo by <a href="https://unsplash.com/@bist31">Birger Strahl</a> on <a href="https://unsplash.com/photos/zebra-on-brown-grass-field-during-daytime-Suaoofu6DXM">Unsplash</a></p>
 <h3 class="overlay darker fragment">Not everything is <code>black</code> &amp; <code>white</code>&hellip;</h3>
 
 </section>
 
       
-      <section data-background-color="#222" data-background-image="assets/images/birger-strahl-Suaoofu6DXM-unsplash.jpg" data-background-repeat="no-repeat" data-background-size="cover">
+      <section data-background-color="#222" data-background-image="assets/images/birger-strahl-Suaoofu6DXM-unsplash.jpg" data-background-repeat="no-repeat" data-background-size="cover" style="--data-background-color: #222; --data-background-image: url(/assets/images/birger-strahl-Suaoofu6DXM-unsplash.jpg); --data-background-repeat: no-repeat; --data-background-size: cover">
   <p class="sr-only">Photo by <a href="https://unsplash.com/@bist31">Birger Strahl</a> on <a href="https://unsplash.com/photos/zebra-on-brown-grass-field-during-daytime-Suaoofu6DXM">Unsplash</a></p>
 
 
 </section>
 
       
-      <section>
+      <section  >
   <h3><code>color-mix()</code></h3>
 <pre class="language-css"><code class="language-css"><span class="token selector">button</span> <span class="token punctuation">{</span>
   <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--button-color<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -705,14 +705,14 @@
 </section>
 
       
-      <section data-background-color="#222" data-background-image="assets/images/ciu-contrast-color.jpg" data-background-repeat="no-repeat" data-background-size="contain">
+      <section data-background-color="#222" data-background-image="assets/images/ciu-contrast-color.jpg" data-background-repeat="no-repeat" data-background-size="contain" style="--data-background-color: #222; --data-background-image: url(/assets/images/ciu-contrast-color.jpg); --data-background-repeat: no-repeat; --data-background-size: contain">
   <p class="sr-only"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">CanIUse</a> Baseline 2024, supported in major browsers, covering 82.81% of global usage.</p>
 <h3 class="overlay"><a href="https://caniuse.com/wf-contrast-color" rel="noreferrer noopener nofollow" target="_blank">82%</a></h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span><span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">color-contrast</span><span class="token punctuation">(</span>blue<span class="token punctuation">)</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
   <span class="token selector">.button</span> <span class="token punctuation">{</span>
     <span class="token property">--button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--blue<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -725,13 +725,13 @@
 </section>
 
       
-      <section>
+      <section  >
   <h3>Learn More…</h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <h4><code>light-dark()</code></h4>
 <ul>
 <li><a href="https://m.youtube.com/shorts/XJhMW2QuBiQ">Easier Light/Dark Color Theming</a>, Kevin Powell (video)</li>
@@ -743,7 +743,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h4>Relative Colors &amp; <code>color-mix()</code></h4>
 <ul>
 <li><a href="https://piccalil.li/blog/a-pragmatic-guide-to-modern-css-colours-part-one/">A pragmatic guide to modern CSS colours - part one</a>, Kevin Powell</li>
@@ -754,7 +754,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h3>Contrast &amp; A11Y</h3>
 <ul>
 <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors">forced-colors</a></li>
@@ -765,7 +765,7 @@
 </section>
 
       
-      <section>
+      <section  >
   <h4><code>contrast-color()</code></h4>
 <ul>
 <li><a href="https://una.im/contrast-color">Automated accessible text with contrast-color()</a>, Una Kravets</li>
@@ -776,13 +776,13 @@
 </section>
 
       
-      <section>
-  <h3>Thanks, Y’all! <div aria-hidden="true">👍</div></h3>
+      <section  >
+  <h3>Thanks, Y’all! <span aria-hidden="true">👍</span></h3>
 
 </section>
 
       
-      <section>
+      <section  >
   <h3>Practical Refactors with Modern CSS Colors</h3>
 
 <div class="grid">
@@ -860,6 +860,8 @@
       </div>
 
       <a href="https://jdsteinbach.com/practical-color-css/" class="colophon__link">jds.li/css-color</a>
+      <a href="/reader-mode" class="colophon__link" aria-label="View in reader mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true"><rect width="256" height="256" fill="none"></rect><path d="M32,216V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V216l-32-16-32,16-32-16L96,216,64,200Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="144" y1="112" x2="192" y2="112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="144" y1="144" x2="192" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><rect x="64" y="96" width="48" height="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect></svg>
+</a>
     </footer>
   </div>
 

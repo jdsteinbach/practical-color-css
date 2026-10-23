@@ -3,7 +3,7 @@
   --r-background: rgb(247.65, 244.55, 248.5);
   --r-background-color: rgb(247.65, 244.55, 248.5);
   --r-main-font: BodySans, Helvetica, sans-serif;
-  --r-main-font-size: 52px;
+  --r-main-font-size: 3.25rem;
   --r-main-color: #222;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
@@ -51,17 +51,17 @@ body {
   font-feature-settings: "liga";
 }
 
-.reveal section h1 {
+.reveal :is(section, .section) h1 {
   --title-max-width: 72rem;
   font-weight: 900;
   font-stretch: 75%;
   letter-spacing: 0.05em;
 }
-.reveal section .lighter {
+.reveal :is(section, .section) .lighter {
   opacity: 0.5;
   font-weight: 100;
 }
-.reveal section h1, .reveal section h2, .reveal section h3, .reveal section h4, .reveal section h5, .reveal section h6 {
+.reveal :is(section, .section) h1, .reveal :is(section, .section) h2, .reveal :is(section, .section) h3, .reveal :is(section, .section) h4, .reveal :is(section, .section) h5, .reveal :is(section, .section) h6 {
   margin-right: auto;
   margin-left: auto;
   max-width: var(--title-max-width, 64rem);
@@ -70,50 +70,50 @@ body {
   letter-spacing: 0.05em;
   text-wrap: balance;
 }
-.reveal section h1 + p,
-.reveal section h1 + ul, .reveal section h2 + p,
-.reveal section h2 + ul, .reveal section h3 + p,
-.reveal section h3 + ul, .reveal section h4 + p,
-.reveal section h4 + ul, .reveal section h5 + p,
-.reveal section h5 + ul, .reveal section h6 + p,
-.reveal section h6 + ul {
+.reveal :is(section, .section) h1 + p,
+.reveal :is(section, .section) h1 + ul, .reveal :is(section, .section) h2 + p,
+.reveal :is(section, .section) h2 + ul, .reveal :is(section, .section) h3 + p,
+.reveal :is(section, .section) h3 + ul, .reveal :is(section, .section) h4 + p,
+.reveal :is(section, .section) h4 + ul, .reveal :is(section, .section) h5 + p,
+.reveal :is(section, .section) h5 + ul, .reveal :is(section, .section) h6 + p,
+.reveal :is(section, .section) h6 + ul {
   margin-top: 1em;
 }
-.reveal section h2, .reveal section h4, .reveal section h6 {
+.reveal :is(section, .section) h2, .reveal :is(section, .section) h4, .reveal :is(section, .section) h6 {
   font-weight: 900;
   font-stretch: 100%;
   text-transform: none;
 }
-.reveal section h1 + h3,
-.reveal section h2 + h3 {
+.reveal :is(section, .section) :is(h1, h2) + :is(h3, p) {
   text-transform: none;
   font-weight: 600;
   font-stretch: 100%;
+  font-size: 1.618em;
 }
-.reveal section h3:first-child:last-child {
+.reveal :is(section, .section) h3:first-child:last-child {
   font-size: 2.058em;
 }
-.reveal section h2 .h1 {
+.reveal :is(section, .section) h2 .h1 {
   margin-bottom: 0.125em;
   padding-bottom: 0.125em;
   display: block;
   font-size: 1.6em;
   border-bottom: 0.15em solid currentColor;
 }
-.reveal section h1 em, .reveal section h2 em, .reveal section h3 em, .reveal section h4 em, .reveal section h5 em, .reveal section h6 em {
+.reveal :is(section, .section) h1 em, .reveal :is(section, .section) h2 em, .reveal :is(section, .section) h3 em, .reveal :is(section, .section) h4 em, .reveal :is(section, .section) h5 em, .reveal :is(section, .section) h6 em {
   font-style: italic;
   border-bottom: 0.125em solid currentColor;
 }
-.reveal section h1 a em, .reveal section h2 a em, .reveal section h3 a em, .reveal section h4 a em, .reveal section h5 a em, .reveal section h6 a em {
+.reveal :is(section, .section) h1 a em, .reveal :is(section, .section) h2 a em, .reveal :is(section, .section) h3 a em, .reveal :is(section, .section) h4 a em, .reveal :is(section, .section) h5 a em, .reveal :is(section, .section) h6 a em {
   border-bottom: none;
 }
-.reveal section a, .reveal section a:hover, .reveal section a:active {
+.reveal :is(section, .section) a, .reveal :is(section, .section) a:hover, .reveal :is(section, .section) a:active {
   text-decoration: underline;
 }
-.reveal section code {
+.reveal :is(section, .section) code {
   font-size: 0.9em;
 }
-.reveal section pre {
+.reveal :is(section, .section) pre {
   display: inline-block;
   width: auto;
   padding: 3.0902348578vmin;
@@ -122,71 +122,72 @@ body {
   background-color: #222;
   color: #f0a86e;
 }
-.reveal section pre code {
+.reveal :is(section, .section) pre code {
   max-height: 100%;
   box-sizing: border-box;
-  font-size: 43.3333333333px;
+  font-size: calc(var(--r-main-font-size, 1rem) / 1.2);
+  font-weight: 300;
   line-height: 1.2;
   overflow-x: scroll;
   overflow-y: visible;
 }
-.reveal section pre mark {
+.reveal :is(section, .section) pre mark {
   padding: 0 0.25em;
   font-weight: 800;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.reveal section .small-code + pre code {
-  font-size: 29.7142857143px;
+.reveal :is(section, .section) .small-code + pre code {
+  font-size: 1.8571428571rem;
 }
-.reveal section .small-code + pre code,
-.reveal section pre:first-child:only-of-type {
+.reveal :is(section, .section) .small-code + pre code,
+.reveal :is(section, .section) pre:first-child:only-of-type {
   padding: 0;
   border-radius: 0;
   box-shadow: 0 0 0 50vmax #222;
 }
-.reveal section ul,
-.reveal section ol {
+.reveal :is(section, .section) ul,
+.reveal :is(section, .section) ol {
   margin-right: auto;
   margin-left: auto;
   max-width: 22em;
 }
-.reveal section p {
+.reveal :is(section, .section) p {
   margin-right: auto;
   margin-left: auto;
   max-width: 22em;
 }
-.reveal section p:first-child:last-child {
+.reveal :is(section, .section) p:first-child:last-child {
   font-size: 1.618em;
 }
-.reveal section p:not(:last-child) {
+.reveal :is(section, .section) p:not(:last-child) {
   margin-bottom: 1em;
 }
-.reveal section .p--large {
+.reveal :is(section, .section) .p--large {
   font-size: 1.272em;
 }
-.reveal section :is(pre, ul, ol) + p {
+.reveal :is(section, .section) :is(pre, ul, ol) + p {
   margin-top: 0.618em;
 }
-.reveal section blockquote {
+.reveal :is(section, .section) blockquote {
   padding: 1.618em;
   background-color: #f0a86e;
   box-shadow: none;
 }
-.reveal section i, .reveal section em {
+.reveal :is(section, .section) i, .reveal :is(section, .section) em {
   font-style: italic;
 }
-.reveal section b, .reveal section strong {
+.reveal :is(section, .section) b, .reveal :is(section, .section) strong {
   font-weight: 600;
 }
-.reveal section .sr-only {
+.reveal :is(section, .section) .sr-only {
   position: absolute;
   height: 1px;
   width: 1px;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
 }
-.reveal section .link {
+.reveal :is(section, .section) .link {
   margin-left: 0.25em;
   padding: 0.125em;
   display: inline-flex;
@@ -194,18 +195,21 @@ body {
   border-radius: 0.125em;
   background-color: rgba(var(--r-background-color), 0.25);
 }
-.reveal section .link:hover, .reveal section .link:active {
+.reveal :is(section, .section) .link:hover, .reveal :is(section, .section) .link:active {
   background-color: rgba(1.8, 81.9, 143.1, 0.15);
 }
-.reveal section .link__icon {
+.reveal :is(section, .section) .link__icon {
   width: 0.8em;
   height: 0.8em;
 }
-.reveal section.has-dark-background h1, .reveal section.has-dark-background h2, .reveal section.has-dark-background h3, .reveal section.has-dark-background h4, .reveal section.has-dark-background h5, .reveal section.has-dark-background h6, .reveal section.has-dark-background p, .reveal section.has-dark-background ul, .reveal section.has-dark-background ol, .reveal section.has-dark-background blockquote {
+.reveal :is(section, .section).has-dark-background h1, .reveal :is(section, .section).has-dark-background h2, .reveal :is(section, .section).has-dark-background h3, .reveal :is(section, .section).has-dark-background h4, .reveal :is(section, .section).has-dark-background h5, .reveal :is(section, .section).has-dark-background h6, .reveal :is(section, .section).has-dark-background p, .reveal :is(section, .section).has-dark-background ul, .reveal :is(section, .section).has-dark-background ol, .reveal :is(section, .section).has-dark-background blockquote {
   color: rgb(247.65, 244.55, 248.5);
 }
 .reveal.has-dark-background, .reveal:has(.present pre:first-child:only-of-type) {
   --colophon-logo-color: #fff;
+}
+.print-pdf .reveal {
+  --noper-position: absolute;
 }
 .reveal .logo {
   margin-bottom: 0;
@@ -290,19 +294,15 @@ body {
   opacity: 1;
 }
 .reveal .colophon {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
+  right: 0.1618em;
+  bottom: 0.1618em;
+  left: 0.1618em;
   z-index: 1;
-}
-.reveal .colophon::after {
-  content: "";
-  display: block;
-  width: 17vw;
 }
 .reveal .colophon::before {
   content: "";
@@ -334,7 +334,11 @@ body {
   transition: fill 0.3s;
 }
 .reveal .colophon__link {
-  padding: 0.5em 1em 0.6em;
+  height: 2em;
+  padding: 0 1em;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
   font-family: "MonoFont", Operator Mono, monospace;
   font-style: italic;
   font-size: 3vmin;
@@ -347,6 +351,31 @@ body {
 .reveal .colophon__link:hover, .reveal .colophon__link:active {
   border: 1px solid rgb(from var(--r-background) r g b/1);
   background-color: rgb(from var(--r-background) r g b/1);
+}
+.reveal .colophon__link:has(svg) {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  margin-inline-end: 4.6em;
+}
+.reveal .colophon__link svg {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+}
+.reveal .colophon__link:hover[aria-label]::after, .reveal .colophon__link:focus[aria-label]::after, .reveal .colophon__link:focus-visible[aria-label]::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: calc(100% - 0.381924rem);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 0.381924rem 0.618rem;
+  border-radius: inherit;
+  background: #222;
+  color: rgb(247.65, 244.55, 248.5);
+  opacity: 0.8;
+  font-size: 0.8rem;
 }
 .reveal .credit {
   margin-top: 1.6em;
@@ -476,7 +505,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  position: var(--noper-position, fixed);
   top: 0;
   right: 0;
   bottom: 0;
@@ -494,6 +523,60 @@ body {
   height: 50vmin;
   width: 50vmin;
   display: block;
+}
+
+.reader-display .reveal {
+  --r-main-font-size: 1.618rem;
+  --noper-position: absolute;
+  touch-action: initial;
+}
+.reader-display .reveal .slides,
+.reader-display .reveal .section {
+  pointer-events: initial !important;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+}
+.reader-display .reveal .section {
+  margin: 0 auto;
+  padding: 4em max(1em, 50vw - 16.18em);
+  border-bottom: 1px solid rgba(34, 34, 34, 0.25);
+  overflow: hidden;
+}
+.reader-display .reveal .section pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.reader-display .reveal .section[data-background-image] {
+  background-color: var(--data-background-color);
+  background-image: var(--data-background-image);
+  background-size: var(--data-background-size, cover);
+  background-repeat: var(--data-background-repeat, no-repeat);
+  background-position: center;
+  min-height: 40vmin;
+}
+.reader-display .reveal .fragment {
+  display: initial;
+  opacity: 1;
+  visibility: visible;
+}
+.reader-display .reveal .noper {
+  display: flex;
+}
+.reader-display .reveal .colophon::before {
+  display: none;
+}
+.reader-display .reveal .colophon {
+  padding: 0 0.5em;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(247.65, 244.55, 248.5);
+}
+.reader-display .reveal .grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /*********************************************
