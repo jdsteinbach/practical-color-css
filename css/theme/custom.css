@@ -209,6 +209,7 @@ body {
 }
 .reveal.has-dark-background, .reveal:has(.present pre:first-child:only-of-type) {
   --colophon-logo-color: #fff;
+  --colophon-link-focus-ring-color: #fff;
 }
 .print-pdf .reveal {
   --noper-position: absolute;
@@ -351,19 +352,13 @@ body {
   transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
 .reveal .colophon__link:hover, .reveal .colophon__link:active {
-  border: 1px solid rgb(from var(--r-background) r g b/1);
+  border: 1px solid rgb(from var(--r-link-color) r g b/1);
   background-color: rgb(from var(--r-background) r g b/1);
 }
-.reveal .colophon__link:has(svg) {
-  display: inline-flex;
-  align-items: center;
-  justify-self: end;
-  margin-inline-end: 4.6em;
-}
-.reveal .colophon__link svg {
-  height: 1em;
-  width: 1em;
-  fill: currentColor;
+.reveal .colophon__link:focus {
+  outline: 4px solid var(--colophon-link-focus-ring-color, #025b9f);
+  outline-offset: 2px;
+  background-color: rgb(from var(--r-background) r g b/1);
 }
 .reveal .colophon__link:hover[aria-label]::after, .reveal .colophon__link:focus[aria-label]::after, .reveal .colophon__link:focus-visible[aria-label]::after {
   content: attr(aria-label);
@@ -378,6 +373,20 @@ body {
   color: rgb(247.65, 244.55, 248.5);
   opacity: 0.8;
   font-size: 0.8rem;
+}
+.reveal .colophon__link--icon {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  margin-inline-end: 120px;
+  background-color: color-mix(in oklch, var(--r-background), #025b9f 20%);
+}
+.reveal .colophon__link--icon svg {
+  height: 1em;
+  width: 1em;
+}
+.reveal .colophon__link--icon svg * {
+  color: #025b9f;
 }
 .reveal .credit {
   margin-top: 1.6em;
