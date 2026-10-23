@@ -260,11 +260,11 @@ body {
   font-style: italic;
 }
 .reveal .break-down {
-  font-weight: normal;
-  color: rgba(240, 168, 110, 0.85);
+  font-weight: 300;
+  color: rgb(243.06, 198.62, 165.4);
 }
 .reveal .break-down.current-fragment {
-  font-weight: bold;
+  font-weight: 800;
   color: #fff;
 }
 .reveal .break-down__anchor {
