@@ -146,11 +146,13 @@ body {
   border-radius: 0;
   box-shadow: 0 0 0 50vmax #222;
 }
-.reveal :is(section, .section) ul,
-.reveal :is(section, .section) ol {
+.reveal :is(section, .section) :is(ul, ol) {
   margin-right: auto;
   margin-left: auto;
   max-width: 22em;
+}
+.reveal :is(section, .section) :is(ul, ol) :is(ul, ol) {
+  margin-inline-start: 1em;
 }
 .reveal :is(section, .section) p {
   margin-right: auto;
