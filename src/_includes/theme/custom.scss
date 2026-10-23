@@ -283,6 +283,7 @@ body {
   &.has-dark-background,
   &:has(.present pre:first-child:only-of-type) {
     --colophon-logo-color: #fff;
+    --colophon-link-focus-ring-color: #fff;
   }
 
   .print-pdf & {

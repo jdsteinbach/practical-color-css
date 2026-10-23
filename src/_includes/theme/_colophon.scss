@@ -60,21 +60,14 @@
 
   &:hover,
   &:active {
-    border: 1px solid rgb(from var(--r-background) r g b / 1);
+    border: 1px solid rgb(from var(--r-link-color) r g b / 1);
     background-color: rgb(from var(--r-background) r g b / 1);
   }
 
-  &:has(svg) {
-    display: inline-flex;
-    align-items: center;
-    justify-self: end;
-    margin-inline-end: 4.6em;
-  }
-
-  svg {
-    height: 1em;
-    width: 1em;
-    fill: currentColor;
+  &:focus {
+    outline: 4px solid var(--colophon-link-focus-ring-color, $linkColor);
+    outline-offset: 2px;
+    background-color: rgb(from var(--r-background) r g b / 1);
   }
 
   &:hover,
@@ -93,6 +86,27 @@
       color: $backgroundColor;
       opacity: 0.8;
       font-size: 0.8rem;
+    }
+  }
+}
+
+.colophon__link--icon {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  margin-inline-end: 120px;
+  background-color: color-mix(
+    in oklch,
+    var(--r-background),
+    $linkColor 20%
+  );
+
+  svg {
+    height: 1em;
+    width: 1em;
+
+    * {
+      color: $linkColor;
     }
   }
 }
