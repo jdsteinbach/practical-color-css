@@ -89,7 +89,7 @@ $selector-colors: (
 
 .break-down {
   font-weight: 300;
-  color: rgba($preColor, .85);
+  color: color.mix($preColor, $backgroundColor, 60%);
 
   &.current-fragment {
     font-weight: 800;
