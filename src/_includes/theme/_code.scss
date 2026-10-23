@@ -88,11 +88,11 @@ $selector-colors: (
 }
 
 .break-down {
-  font-weight: normal;
+  font-weight: 300;
   color: rgba($preColor, .85);
 
   &.current-fragment {
-    font-weight: bold;
+    font-weight: 800;
     color: #fff;
   }
 }
