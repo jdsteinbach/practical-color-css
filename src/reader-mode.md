@@ -1,0 +1,3 @@
+---
+layout: reveal-reader
+---

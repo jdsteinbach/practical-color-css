@@ -13,5 +13,5 @@
 ```
 
 <div class="fragment noper">
-  <span role="presentation" aria-label="sad trombone" style="font-size: 33vmin">😢🪊</span>
+  <span aria-label="sad trombone" style="font-size: 33vmin">😢🪊</span>
 </div>

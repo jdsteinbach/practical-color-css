@@ -11,7 +11,7 @@ $preColor: #f0a86e;
 $preColor2: color.scale(#7db8ee, $lightness: 20%);
 $preColor3: color.scale(#d7a6e6, $lightness: 20%);
 
-$mainFontSize: 52px;
+$mainFontSize: calc(52rem / 16);
 $mainFont: 'BodySans', Helvetica, sans-serif;
 $headingFont: 'BodySans', Helvetica, sans-serif;
 $headingFontWeight: 700;
@@ -86,7 +86,7 @@ body {
 }
 
 .reveal {
-  section {
+  :is(section, .section) {
     h1 {
       --title-max-width: 72rem;
       font-weight: 900;
@@ -120,11 +120,11 @@ body {
       text-transform: none;
     }
 
-    h1 + h3,
-    h2 + h3 {
+    :is(h1, h2) + :is(h3, p) {
       text-transform: none;
       font-weight: 600;
       font-stretch: 100%;
+      font-size: $heading3Size;
     }
 
     h3:first-child:last-child {
@@ -174,7 +174,8 @@ body {
       code {
         max-height: 100%;
         box-sizing: border-box;
-        font-size:  math.div($mainFontSize, 1.2);
+        font-size: calc(var(--r-main-font-size, 1rem) / 1.2);
+        font-weight: 300;
         line-height: 1.2;
         overflow-x: scroll;
         overflow-y: visible;
@@ -244,10 +245,10 @@ body {
 
     .sr-only {
       position: absolute;
-			height: 1px;
-			width: 1px;
-			overflow: hidden;
-			clip: rect( 1px, 1px, 1px, 1px );
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      clip: rect( 1px, 1px, 1px, 1px );
     }
 
     .link {
@@ -281,6 +282,10 @@ body {
     --colophon-logo-color: #fff;
   }
 
+  .print-pdf & {
+    --noper-position: absolute;
+  }
+
   @import "logo";
   @import "code";
   @import "colophon";
@@ -290,6 +295,68 @@ body {
   @import "noper";
 }
 
+.reader-display .reveal {
+  --r-main-font-size: 1.618rem;
+  --noper-position: absolute;
+  touch-action: initial;
+
+  .slides,
+  .section {
+    pointer-events: initial !important;
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .section {
+    margin: 0 auto;
+    padding: 4em max(1em, calc(50vw - 16.18em));
+    border-bottom: 1px solid rgba($mainColor, .25);
+    overflow: hidden;
+
+    pre {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    &[data-background-image] {
+      background-color: var(--data-background-color);
+      background-image: var(--data-background-image);
+      background-size: var(--data-background-size, cover);
+      background-repeat: var(--data-background-repeat, no-repeat);
+      background-position: center;
+      min-height: 40vmin;
+    }
+  }
+
+  .fragment {
+    display: initial;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .noper {
+    display: flex;
+  }
+
+  .colophon {
+    &::before {
+      display: none;
+    }
+
+    padding: 0 .5em;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $backgroundColor;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 
 // Theme template ------------------------------
 @import "template/theme";

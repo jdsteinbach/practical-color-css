@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+
+  <title>{{ slides.title }}: Static View</title>
+  <meta name="description" content="{{ slides.description }}">
+
+  <link rel="stylesheet" href="../reveal/reset.css">
+  <link rel="stylesheet" href="../reveal/reveal.css">
+  <link rel="stylesheet" href="../css/theme/custom.css">
+</head>
+
+<body class="reader-display">
+  <div class="reveal">
+    <div class="slides">
+      {% for slide in collections.slides %}
+      {% include "_section_reader" %}
+      {% endfor %}
+    </div>
+
+    <footer class="colophon">
+      <div class="colophon__logo">
+        {% include "_colophon-logo" %}
+      </div>
+
+      <a href="{{ slides.public_url }}" class="colophon__link">{{ slides.short_url }}</a>
+
+      <a href="../" class="colophon__link" aria-label="View as presentation">{% include "_icon-presentation" %}</a>
+    </footer>
+  </div>
+</body>
+
+</html>

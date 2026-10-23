@@ -88,6 +88,30 @@ module.exports = (eleventyConfig) => {
     return keys.join(" ");
   });
 
+  eleventyConfig.addFilter("custom_props", (attrs) => {
+    if (!attrs) return;
+
+    if (typeof attrs !== "object") return;
+
+    if (Object.keys(attrs).length < 1) return;
+
+    const keys = [];
+
+    Object.keys(attrs).map((key) => {
+      if (key.indexOf("data-") === 0) {
+        if (key === "data-background-image") {
+          keys.push(`--${key}: url(/${attrs[key].trim()})`);
+        } else {
+          keys.push(`--${key}: ${attrs[key].trim()}`);
+        }
+      }
+    });
+
+    if (keys.length < 1) return;
+
+    return `style="${keys.join("; ")}"`;
+  });
+
   eleventyConfig.setLibrary("md", markdownIt(mdOptions));
 
   eleventyConfig.addPlugin(syntaxHighlight, {

@@ -1,18 +1,13 @@
 .colophon {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
+  right: .1618em;
+  bottom: .1618em;
+  left: .1618em;
   z-index: 1;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 17vw;
-  }
 
   &::before {
     content: '';
@@ -31,12 +26,9 @@
 
   &::after {
     content: "";
-   position: absolute;
-   inset: 0;
-   z-index: -1;
-
-  //  mask: linear-gradient(to top, transparent, black 25%, black 75%, transparent), linear-gradient(to left, transparent, black 25%, black 75%, transparent);
-  //  backdrop-filter: blur(1vmin);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
   }
 
   svg {
@@ -52,7 +44,11 @@
 }
 
 .colophon__link {
-  padding: .5em 1em .6em;
+  height: 2em;
+  padding: 0 1em;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
   font-family: $codeFont;
   font-style: italic;
   font-size: 3vmin;
@@ -66,5 +62,37 @@
   &:active {
     border: 1px solid rgb(from var(--r-background) r g b / 1);
     background-color: rgb(from var(--r-background) r g b / 1);
+  }
+
+  &:has(svg) {
+    display: inline-flex;
+    align-items: center;
+    justify-self: end;
+    margin-inline-end: 4.6em;
+  }
+
+  svg {
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    &[aria-label]::after {
+      content: attr(aria-label);
+      position: absolute;
+      bottom: calc(100% - calc(.618rem * .618));
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      padding: calc(.618rem * .618) .618rem;
+      border-radius: inherit;
+      background: $mainColor;
+      color: $backgroundColor;
+      opacity: 0.8;
+      font-size: 0.8rem;
+    }
   }
 }
